@@ -11,8 +11,6 @@ end
 provides "varnish::default"
 recipe "varnish::default", "Install and configure Varnish Cache"
 
-depends "rs_utils"
-
 attribute 'varnish/version',
 :display_name => "Varnish version",
 :description => "What version of Varnish to install",
