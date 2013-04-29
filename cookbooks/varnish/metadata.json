@@ -1,188 +1,189 @@
 {
+  "recommendations": {
+  },
+  "license": "Apache 2.0",
   "replacing": {
   },
-  "maintainer_email": "tfheen@varnish-software.com",
-  "description": "Installs and configures varnish",
+  "maintainer": "Varnish Software",
+  "conflicting": {
+  },
+  "version": "0.7.0",
   "recipes": {
     "varnish::default": "Install and configure Varnish Cache"
   },
-  "maintainer": "Varnish Software",
+  "name": "varnish",
   "attributes": {
-    "varnish/parameters": {
+    "varnish/storage_spec": {
       "type": "string",
-      "description": "Any extra command line parameters for Varnish",
+      "calculated": false,
       "recipes": [
         "varnish::default"
       ],
-      "calculated": false,
-      "required": "optional",
-      "display_name": "Extra  parameters",
-      "default": "",
+      "required": "recommended",
       "choice": [
 
-      ]
-    },
-    "varnish/listen_address": {
-      "type": "string",
-      "description": "What address Varnish should listen on. Blank means all IP addresses",
-      "recipes": [
-        "varnish::default"
       ],
-      "calculated": false,
-      "required": "optional",
-      "display_name": "Address to listen on for HTTP traffic",
-      "default": "",
-      "choice": [
-
-      ]
-    },
-    "varnish/version": {
-      "type": "string",
-      "description": "What version of Varnish to install",
-      "recipes": [
-        "varnish::default"
-      ],
-      "calculated": false,
-      "required": "optional",
-      "display_name": "Varnish version",
-      "default": "3.0",
-      "choice": [
-        "2.1",
-        "3.0"
-      ]
+      "default": "auto",
+      "display_name": "Storage specification",
+      "description": "What storage and sizing information"
     },
     "varnish/remote_vcl": {
       "type": "string",
-      "description": "Where to fetch the VCL from.",
+      "calculated": false,
       "recipes": [
         "varnish::default"
       ],
-      "calculated": false,
       "required": "optional",
-      "display_name": "VCL URL",
-      "default": "",
       "choice": [
 
-      ]
-    },
-    "varnish/max_threads": {
-      "type": "string",
-      "description": "The minimum number of threads Varnish should use",
-      "recipes": [
-        "varnish::default"
       ],
-      "calculated": false,
-      "required": "recommended",
-      "display_name": "Maximum number of threads",
-      "default": "1000",
-      "choice": [
-
-      ]
+      "default": "",
+      "display_name": "VCL URL",
+      "description": "Where to fetch the VCL from."
     },
     "varnish/admin_port": {
       "type": "string",
-      "description": "What port the administrative port should run on.",
+      "calculated": false,
       "recipes": [
         "varnish::default"
       ],
-      "calculated": false,
       "required": "optional",
-      "display_name": "Administrative interface port",
+      "choice": [
+
+      ],
       "default": "",
-      "choice": [
-
-      ]
+      "display_name": "Administrative interface port",
+      "description": "What port the administrative port should run on."
     },
-    "varnish/listen_port": {
+    "varnish/version": {
       "type": "string",
-      "description": "Any extra command line parameters for Varnish",
+      "calculated": false,
       "recipes": [
         "varnish::default"
       ],
-      "calculated": false,
       "required": "optional",
-      "display_name": "Port to listen on for HTTP traffic",
-      "default": "80",
+      "choice": [
+        "2.1",
+        "3.0"
+      ],
+      "default": "3.0",
+      "display_name": "Varnish version",
+      "description": "What version of Varnish to install"
+    },
+    "varnish/parameters": {
+      "type": "string",
+      "calculated": false,
+      "recipes": [
+        "varnish::default"
+      ],
+      "required": "optional",
       "choice": [
 
-      ]
+      ],
+      "default": "",
+      "display_name": "Extra  parameters",
+      "description": "Any extra command line parameters for Varnish"
     },
     "varnish/admin_address": {
       "type": "string",
-      "description": "What address Varnish should listen on for administrative connections. Blank means all IP addresses",
+      "calculated": false,
       "recipes": [
         "varnish::default"
       ],
-      "calculated": false,
       "required": "optional",
-      "display_name": "Administrative interface address",
-      "default": "",
       "choice": [
 
-      ]
+      ],
+      "default": "",
+      "display_name": "Administrative interface address",
+      "description": "What address Varnish should listen on for administrative connections. Blank means all IP addresses"
     },
     "varnish/min_threads": {
       "type": "string",
-      "description": "The minimum number of threads Varnish should run with",
+      "calculated": false,
       "recipes": [
         "varnish::default"
       ],
-      "calculated": false,
       "required": "recommended",
-      "display_name": "Minimum number of threads",
+      "choice": [
+
+      ],
       "default": "10",
-      "choice": [
-
-      ]
+      "display_name": "Minimum number of threads",
+      "description": "The minimum number of threads Varnish should run with"
     },
-    "varnish/storage_spec": {
+    "varnish/max_threads": {
       "type": "string",
-      "description": "What storage and sizing information",
+      "calculated": false,
       "recipes": [
         "varnish::default"
       ],
-      "calculated": false,
       "required": "recommended",
-      "display_name": "Storage specification",
-      "default": "auto",
       "choice": [
 
-      ]
+      ],
+      "default": "1000",
+      "display_name": "Maximum number of threads",
+      "description": "The minimum number of threads Varnish should use"
+    },
+    "varnish/listen_port": {
+      "type": "string",
+      "calculated": false,
+      "recipes": [
+        "varnish::default"
+      ],
+      "required": "optional",
+      "choice": [
+
+      ],
+      "default": "80",
+      "display_name": "Port to listen on for HTTP traffic",
+      "description": "Any extra command line parameters for Varnish"
+    },
+    "varnish/listen_address": {
+      "type": "string",
+      "calculated": false,
+      "recipes": [
+        "varnish::default"
+      ],
+      "required": "optional",
+      "choice": [
+
+      ],
+      "default": "",
+      "display_name": "Address to listen on for HTTP traffic",
+      "description": "What address Varnish should listen on. Blank means all IP addresses"
     },
     "varnish/secret": {
       "type": "string",
-      "description": "This is a random string used for authenticating with Varnish",
+      "calculated": false,
       "recipes": [
         "varnish::default"
       ],
-      "calculated": false,
       "required": "required",
-      "display_name": "Authentication secret",
       "choice": [
 
-      ]
+      ],
+      "display_name": "Authentication secret",
+      "description": "This is a random string used for authenticating with Varnish"
     }
+  },
+  "suggestions": {
+  },
+  "long_description": "",
+  "groupings": {
+  },
+  "platforms": {
+    "debian": ">= 0.0.0",
+    "centos": ">= 0.0.0",
+    "ubuntu": ">= 0.0.0"
+  },
+  "maintainer_email": "tfheen@varnish-software.com",
+  "dependencies": {
+    "rightscale": ">= 0.0.0"
   },
   "providing": {
     "varnish::default": ">= 0.0.0"
   },
-  "dependencies": {
-  },
-  "conflicting": {
-  },
-  "name": "varnish",
-  "platforms": {
-    "ubuntu": ">= 0.0.0",
-    "debian": ">= 0.0.0",
-    "centos": ">= 0.0.0"
-  },
-  "groupings": {
-  },
-  "long_description": "",
-  "version": "0.7.0",
-  "suggestions": {
-  },
-  "recommendations": {
-  },
-  "license": "Apache 2.0"
+  "description": "Installs and configures varnish"
 }
