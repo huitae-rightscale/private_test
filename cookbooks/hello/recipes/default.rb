@@ -1,7 +1,7 @@
 
 rightscale_marker :begin
 
-log node[:message][:hello]
+log node[:hello][:messages]
 
 rightscale_marker :end
 
