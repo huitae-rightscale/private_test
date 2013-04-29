@@ -1,0 +1,45 @@
+{
+  "attributes": {
+    "hello/messages": {
+      "description": "Input messages to say",
+      "calculated": false,
+      "type": "string",
+      "display_name": "Hello Message",
+      "required": "optional",
+      "choice": [
+
+      ],
+      "default": "Hi There! This is a Test Message!",
+      "recipes": [
+        "hello::default"
+      ]
+    }
+  },
+  "conflicting": {
+  },
+  "long_description": "",
+  "description": "Just print hello world",
+  "providing": {
+  },
+  "maintainer_email": "",
+  "version": "0.1.0",
+  "groupings": {
+  },
+  "suggestions": {
+  },
+  "platforms": {
+  },
+  "maintainer": "Hello World",
+  "license": "",
+  "recommendations": {
+  },
+  "dependencies": {
+    "rightscale": ">= 0.0.0"
+  },
+  "name": "hello",
+  "recipes": {
+    "hello::default": "Just say Hello!"
+  },
+  "replacing": {
+  }
+}
