@@ -12,6 +12,10 @@ attribute 'hello/messages',
 :display_name => "Hello Message",
 :description => "Input messages to say",
 :type => "string",
-:required => "optional",
+:required => "required",
 :recipes => [ 'hello::default' ],
 :default => "Hi There! This is a Test Message!"
+
+
+
+

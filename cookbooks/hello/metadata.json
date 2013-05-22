@@ -1,45 +1,45 @@
 {
-  "groupings": {
+  "platforms": {
   },
-  "attributes": {
-    "hello/messages": {
-      "recipes": [
-        "hello::default"
-      ],
-      "type": "string",
-      "choice": [
-
-      ],
-      "required": "optional",
-      "calculated": false,
-      "display_name": "Hello Message",
-      "description": "Input messages to say",
-      "default": "Hi There! This is a Test Message!"
-    }
+  "maintainer_email": "",
+  "suggestions": {
   },
   "recipes": {
     "hello::default": "Just say Hello!"
   },
+  "license": "",
+  "providing": {
+  },
   "dependencies": {
     "rightscale": ">= 0.0.0"
   },
-  "replacing": {
-  },
+  "maintainer": "Hello World",
+  "long_description": "",
+  "name": "hello",
   "conflicting": {
   },
-  "providing": {
+  "replacing": {
   },
-  "platforms": {
-  },
-  "maintainer": "Hello World",
-  "license": "",
-  "description": "Just print hello world",
   "version": "0.1.0",
-  "suggestions": {
+  "groupings": {
+  },
+  "description": "Just print hello world",
+  "attributes": {
+    "hello/messages": {
+      "choice": [
+
+      ],
+      "type": "string",
+      "required": "required",
+      "recipes": [
+        "hello::default"
+      ],
+      "calculated": false,
+      "display_name": "Hello Message",
+      "default": "Hi There! This is a Test Message!",
+      "description": "Input messages to say"
+    }
   },
   "recommendations": {
-  },
-  "maintainer_email": "",
-  "long_description": "",
-  "name": "hello"
+  }
 }
