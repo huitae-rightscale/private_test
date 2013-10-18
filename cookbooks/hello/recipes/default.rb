@@ -1,6 +1,6 @@
 rightscale_marker
 
-cookbook_file "/etc/yum.repo.d/rpmforge.repo" do
+cookbook_file "/etc/yum.repos.d/rpmforge.repo" do
   source "rpmforge.repo"
   owner "root"
   group "root"
