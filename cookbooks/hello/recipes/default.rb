@@ -1,7 +1,9 @@
 
-rightscale_marker :begin
+rightscale_marker
 
 log node[:hello][:messages]
 
-rightscale_marker :end
+log "Installing #{node[:packages]}"
+
+
 
