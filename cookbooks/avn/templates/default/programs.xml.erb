@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<programs xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xmlns="http://www.avnetworks.com/Programs">
+
+  <!-- defaults values if not specified in individual programs -->
+  <!--
+  <configitem name="bitrate" type="int">3750000</configitem>
+  <configitem name="encryption" type="string">none</configitem>
+  <configitem name="quant" type="int">0</configitem>
+  <configitem name="scripts" type="string"></configitem>
+  -->
+  <!-- quant setting default value is 0, which in turn is interpreted as "default quant for vcodec in use" -->
+  <!-- values can be overriden for a specific vcodec, possibly for a specific display -->
+  <!--
+  <h264>
+    <configitem name="bitrate" type="int">3500000</configitem>
+  </h264>
+  <mpeg2>
+    <configitem name="bitrate" type="int">4000000</configitem>
+  </mpeg2>
+  <mpeg2 display="ntsc">
+    <configitem name="bitrate" type="int">3750000</configitem>
+  </mpeg2>
+
+  -->
+  <h264>
+    <configitem name="bitrate" type="int">6000000</configitem>
+    <configitem name="quant" type="int">20</configitem>
+  </h264>
+
+  <!-- if optional supportedDisplays attribute is included, display is forced into one of these displays
+       - if there is an exact match with device display, that value is used
+       - otherwise, the first value with equal or lesser resolution is used (using "height")
+       - if such value does not exist, using the program will fail for that device display
+  -->
+  <!--
+       - optional attribute: video (default "true"): this is a streaming application
+       - optional attribute: overlayMode (default "client"): "client" for client side overlay, "server" for server side overlays or "none" for no overlays
+       - optional attribute: overlayEncodings (default "png"): comma seperated list of client side overlay encodings supported by this application
+  -->
+  <!-- if optional 'suspendable' attribute is included and value is "true",
+       this application will suspend/resume by sending suspend/resume messages to the application engine
+       instead of stopping and starting the application instance
+  -->
+  <program name="webkitbench" url="webkit:http://172.16.102.198/webkitbench/index.html" supportedDisplays = "HD1080" video="true" overlayMode="client" passthroughVideo="false" >
+    <!-- values for this specific program -->
+    <!--
+    <configitem name="bitrate" type="int">3750000</configitem>
+    <configitem name="encryption" type="string">none</configitem>
+    <configitem name="scripts" type="string">http://foobar.com/script.js,http:://acme.com/script.js</configitem>
+    -->
+    <!-- values can be overriden for a specific vcodec, possibly for a specific display -->
+    <!--
+    <h264>
+      <configitem name="bitrate" type="int">3500000</configitem>
+    </h264>
+    <mpeg2>
+      <configitem name="bitrate" type="int">4000000</configitem>
+    </mpeg2>
+    <mpeg2 display="ntsc">
+      <configitem name="bitrate" type="int">3750000</configitem>
+    </mpeg2>
+    -->
+        <!-- url can be overriden too, for specific displays -->
+        <!--<h264 display="HD720">
+                <configitem name="url" type="string">webkit:http://172.16.102.198/webkitbench/index.html?special=foobar</configitem>
+        </h264>
+        -->
+  </program>
+
+  <program name="facebook" url="webkit:http://app1:9090/fp">
+    <!--
+                        Possible values for encryption are:
+                          - none:     The application is never streamed via an encrypted channel
+                          - optional: The application may be streamed via an encrypted channel, but it is not mandatory
+                          - ssl:      SSL encryption is used.
+                -->
+    <configitem name="encryption" type="string">ssl</configitem>
+    <configitem name="bitrate" type="int">8000000</configitem>
+  </program>
+
+  <program name="tag_local_test" url="tag:"/>
+
+</programs>

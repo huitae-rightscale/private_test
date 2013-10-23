@@ -1,0 +1,131 @@
+# This defines the H5 release
+
+# This version of this file points to the _internal_ repo 61.100.15.71
+
+[base63]
+name=CentOS-6.3 - Base
+baseurl=http://61.100.15.71/centos/6.3/os/x86_64/
+gpgcheck=0
+gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-CentOS-6
+enabled=1
+
+[centos63-update]
+name=CentOS-6.3 - Update
+baseurl=http://61.100.15.71/centos/6.3/updates/x86_64/
+gpgcheck=0
+gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-CentOS-6
+enabled=1
+
+[release15]
+name=H5-1.5 - Release
+baseurl=http://61.100.15.71/h5/1.5/release/x86_64/
+gpgcheck=0
+gpgkey=http://61.100.15.71/RPM-GPG-KEY-activevideo
+enabled=0
+
+[update15SR1]
+name=H5-1.5 SR1 - Update
+baseurl=http://61.100.15.71/h5/1.5/update/x86_64/sr1/
+gpgcheck=0
+gpgkey=http://61.100.15.71/RPM-GPG-KEY-activevideo
+enabled=0
+
+[update15SR2]
+name=H5-1.5 SR2 - Update
+baseurl=http://61.100.15.71/h5/1.5/update/x86_64/sr2/
+gpgcheck=0
+gpgkey=http://61.100.15.71/RPM-GPG-KEY-activevideo
+enabled=0
+
+[update15SR3]
+name=H5-1.5 SR3 - Update
+baseurl=http://61.100.15.71/h5/1.5/update/x86_64/sr3/
+gpgcheck=0
+gpgkey=http://61.100.15.71/RPM-GPG-KEY-activevideo
+enabled=0
+
+[update15SR4]
+name=H5-1.5 SR3 - Update
+baseurl=http://61.100.15.71/h5/1.5/update/x86_64/sr4/
+gpgcheck=0
+gpgkey=http://61.100.15.71/RPM-GPG-KEY-activevideo
+enabled=0
+
+[release16]
+name=H5-1.6
+baseurl=http://61.100.15.71/h5/1.6/release/x86_64/
+gpgcheck=0
+gpgkey=http://61.100.15.71/RPM-GPG-KEY-activevideo
+enabled=0
+
+[release17]
+name=H5-1.7 - Release
+baseurl=http://61.100.15.71/h5/1.7/release/x86_64/
+gpgcheck=0
+gpgkey=http://61.100.15.71/RPM-GPG-KEY-activevideo
+enabled=0
+
+[release18]
+name=H5-1.8 - Release
+baseurl=http://61.100.15.71/h5/1.8/release/x86_64/
+gpgcheck=0
+gpgkey=http://61.100.15.71/RPM-GPG-KEY-activevideo
+enabled=1
+
+[tools]
+name=SCM - Tools
+baseurl=http://61.100.15.71/tools/x86_64/
+gpgcheck=0
+gpgkey=http://scmrepo-01.ictv.com/activevideo/RPM-GPG-KEY-activevideo
+enabled=0
+
+[runtime-contrib6]
+name=H5 Third Party - Runtime-Contribution6
+baseurl=http://61.100.15.71/runtime-contrib/6/x86_64
+gpgcheck=0
+gpgkey=http://61.100.15.71/RPM-GPG-KEY-activevideo
+enabled=1
+
+[runtime-contrib6.3]
+name=H5 Third Party - Runtime-Contribution6.3
+baseurl=http://61.100.15.71/runtime-contrib/6.3/x86_64
+gpgcheck=0
+gpgkey=http://61.100.15.71/RPM-GPG-KEY-activevideo
+enabled=1
+
+# runtime-contribh5-1.6 is only needed for 1.6 and higher
+[runtime-contribh5-1.6]
+name=H5 Third Party - Runtime-Contribution H5 1.6
+baseurl=http://61.100.15.71/runtime-contrib/h5-1.6/x86_64
+gpgcheck=0
+gpgkey=http://61.100.15.71/RPM-GPG-KEY-activevideo
+enabled=1
+
+[funnel22]
+name=ActiveVideo Funnel v2.2.0 - Release
+baseurl=http://61.100.15.71/funnel/2.2.0/release/x86_64/
+gpgcheck=0
+gpgkey=http://61.100.15.71/RPM-GPG-KEY-activevideo
+enabled=0
+
+[funnel222]
+name=ActiveVideo Funnel v2.2.0 SR2 - Update
+baseurl=http://61.100.15.71/funnel/2.2.0/update/x86_64/sr2
+gpgcheck=0
+gpgkey=http://61.100.15.71/RPM-GPG-KEY-activevideo
+enabled=0
+
+[funnel24]
+name=ActiveVideo Funnel v2.4 - Release
+baseurl=http://61.100.15.71/funnel/2.4/release/x86_64/
+gpgcheck=0
+gpgkey=http://61.100.15.71/RPM-GPG-KEY-activevideo
+enabled=0
+
+[mariadb]
+name=Maria-Database v5.2.6 - MariaDB
+baseurl=http://61.100.15.71/mariadb/5.2.6/x86_64/
+gpgcheck=0
+gpgkey=http://61.100.15.71/RPM-GPG-KEY-activevideo
+enabled=0
+

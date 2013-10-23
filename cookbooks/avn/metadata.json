@@ -1,0 +1,61 @@
+{
+  "description": "Install & configure avn application",
+  "conflicting": {
+  },
+  "license": "",
+  "platforms": {
+  },
+  "providing": {
+  },
+  "recommendations": {
+  },
+  "long_description": "",
+  "suggestions": {
+  },
+  "dependencies": {
+    "rightscale": ">= 0.0.0"
+  },
+  "name": "avn",
+  "replacing": {
+  },
+  "version": "0.1.0",
+  "maintainer_email": "",
+  "attributes": {
+    "avn/transcoder_ip": {
+      "description": "IP of transcoder server",
+      "display_name": "transcoder_ip",
+      "calculated": false,
+      "required": "required",
+      "recipes": [
+        "avn::install_cloudtv",
+        "avn::install_transcoder"
+      ],
+      "choice": [
+
+      ],
+      "type": "string"
+    },
+    "avn/tier": {
+      "description": "Server Role",
+      "display_name": "tier",
+      "calculated": false,
+      "required": "required",
+      "recipes": [
+        "avn::default"
+      ],
+      "choice": [
+        "cloudtv",
+        "transcoder"
+      ],
+      "type": "string"
+    }
+  },
+  "maintainer": "",
+  "recipes": {
+    "avn::default": "default recipe",
+    "avn::install_transcoder": "Install & configure transcoder",
+    "avn::install_cloudtv": "Install & configure cloudtv app"
+  },
+  "groupings": {
+  }
+}

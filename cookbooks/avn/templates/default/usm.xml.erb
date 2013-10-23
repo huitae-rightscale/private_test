@@ -1,0 +1,376 @@
+<?xml version="1.0" encoding="utf-8"?>
+<USM xmlns="http://www.avnetworks.com/USM" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+        <!-- PlugIns -->
+        <plugins>
+                <!--  As we can see here, USM supports more than one client interface in parallel.  -->
+
+                <!--  BCD ( Broadband connected devices) IP based client plugin -->
+                <plugin id="bcd"
+                                active="true" type="client_interface"
+                                class="com.activevideo.usm.plugin.client.bcd.BcdClientPlugIn">
+                        <config>
+                                <configitem name="interface" type="string">0.0.0.0:8080</configitem>
+                                <!-- The plugin uses this name as the default device class to load when no deviceClass matches on ClientIDPattern (see devices.xml) -->
+                                <configitem name="deviceClass" type="string">BCDTransport</configitem>
+                                <configitem name="defaultAppUrl" type="string">webkit:http://www.daum.net</configitem>
+                        </config>
+                </plugin>
+
+                <!--  Ictv protocol client plugin -->
+                <plugin id="ictvprot"
+                                active="true" type="client_interface"
+                                class="com.activevideo.usm.plugin.client.ictvprot.IctvProtPlugin">
+                        <config>
+                                <configitem name="listening_port" type="int">5000</configitem>
+                                <configitem name="protocol_version" type="int">8</configitem>
+                                <configitem name="recv_buf_size" type="int">262144</configitem>
+                                <configitem name="heartbeat_expiration_time" type="int">150</configitem>
+                                <configitem name="max_threadpool_size" type="int">64</configitem>
+                        </config>
+                        <customconfig>
+                        </customconfig>
+                </plugin>
+
+                <!--  Bcp (Binary client protocol) client plugin -->
+                <plugin id="bcp"
+                                active="false" type="client_interface"
+                                class="com.activevideo.usm.plugin.client.bcp.BcpPlugin">
+                        <config>
+                                <configitem name="listening_host" type="string">0.0.0.0</configitem>
+                                <configitem name="listening_port" type="int">5001</configitem>
+                                <configitem name="recv_buf_size" type="int">262144</configitem>
+                                <!-- 0 means default value, which is 64k on linux -->
+                                <configitem name="send_buf_size" type="int">0</configitem>
+                                <!-- 0 means default value, which is number of processor cores -->
+                                <configitem name="min_threadpool_size" type="int">0</configitem>
+                                <configitem name="max_threadpool_size" type="int">64</configitem>
+                                <!-- 0 means default value, which is 1010 -->
+                                <configitem name="max_packet_size" type="int">0</configitem>
+                                <configitem name="use_server_as_session_manager" type="int">1</configitem>
+                                <configitem name="tune_complete_required" type="int">1</configitem>
+                                <!-- 0 means default value, which is 3 * ping_interval + 10 -->
+                                <configitem name="max_server_message_interval" type="int">0</configitem>
+                                <configitem name="ping_interval" type="int">60</configitem>
+                                <configitem name="client_repeat_key_delay" type="int">0</configitem>
+                                <configitem name="server_repeat_key_delay_add" type="int">200</configitem>
+                                <configitem name="repeat_key_interval" type="int">50</configitem>
+                                <configitem name="reuse_client_session_id_timeout" type="int">10</configitem>
+                        </config>
+                        <customconfig>
+                        </customconfig>
+                </plugin>
+
+
+                <!--  Ebif client plugin -->
+                <plugin id="ebif"
+                                active="false" type="client_interface"
+                                class="com.activevideo.usm.plugin.client.ebif.EbifPlugin">
+                        <config>
+                                <configitem name="interface" type="string">0.0.0.0:7001</configitem>
+                        </config>
+                        <customconfig>
+                        </customconfig>
+                </plugin>
+
+                <!--  web remote plugin -->
+                <plugin id="webremote"
+                                active="false" type="client_interface"
+                                class="com.activevideo.usm.plugin.client.webremote.WebRemotePlugin">
+                        <config>
+                                <configitem name="interface" type="string">0.0.0.0:16666</configitem>
+                        </config>
+                        <customconfig>
+                        </customconfig>
+                </plugin>
+
+                <!--  control plugin -->
+                <plugin id="control"
+                                active="false" type="client_interface"
+                                class="com.activevideo.usm.plugin.client.control.ControlPlugin">
+                        <config>
+                                <configitem name="interface" type="string">0.0.0.0:16667</configitem>
+                        </config>
+                        <customconfig>
+                        </customconfig>
+                </plugin>
+
+                <!--  Fixed-stream plugin -->
+                <plugin id="fixedstream"
+                                active="false" type="client_interface"
+                                class="com.activevideo.usm.plugin.client.fixedstream.FixedStreamPlugIn">
+                        <config>
+                                <configitem name="group_name" type="string">cloudtv-fixedstream</configitem>
+                                <configitem name="bind_port" type="int">7800</configitem>
+                                <configitem name="initial_hosts" type="string">localhost</configitem>
+                        </config>
+                </plugin>
+
+                <!--  RFBTV protocol client plugin -->
+                <plugin id="rfbtv"
+                                active="true" type="client_interface"
+                                class="com.activevideo.usm.plugin.client.rfbtv.RfbTvClientPlugIn">
+                        <config>
+                                <configitem name="interface" type="string">0.0.0.0:8095</configitem>
+                                <configitem name="defaultAppUrl" type="string">webkit:http://www.naver.com/</configitem>
+                        </config>
+                </plugin>
+
+                <!--  RTSP protocol client plugin -->
+                <plugin id="rtsp"
+                                active="false" type="client_interface"
+                                class="com.activevideo.usm.plugin.client.rtsp.RtspClientPlugin">
+                        <config>
+                                <configitem name="interface" type="string">0.0.0.0:8554</configitem>
+                                <!--<configitem name="defaultAppUrl" type="string">webkit:http://foobar.com/</configitem>-->
+                <!-- Server name to report to RTSP clients -->
+                <configitem name="serverName" type="string">ActiveVideo RTSP Server/1.0</configitem>
+                <!--
+                    Specifies the maximum lag we accept for timing out RTSP sessions.
+                    The RTSP specification says that when the server specifies a timeout value, the client
+                    must use a slightly lower value (this to account for network delays etc..). However, at
+                    least the Amino A110 uses the timeout as given meaning that we could incorrectly consider
+                    a session timed out. The timeoutLag configuration setting specifies how long we a timeout
+                    may lag before we consider it truly timed out.
+                -->
+                <configitem name="timeoutLag" type="int">2</configitem>
+                <!--
+                    semi-colon separated list of recognized session controllers id values.
+                    This is used by the RTSP server to authenticate unbound teardown and get_parameter requests:
+                    if a requesting client has a value in the x-AV-SessionController header which corresponds
+                    with one of the values specified in the sessionControllers array, the unbound request will
+                    be accepted. If the header is missing or has an incorrect value, the request will be denied with
+                    a RTSP 404 error reply.
+                -->
+                <configitem name="sessionController" type="string">Controller_1</configitem>
+                        </config>
+                </plugin>
+
+                <!--  Terminator app engine plugin -->
+                <plugin id="terminatorAppEngine"
+                                active="false" type="app_engine"
+                                class="com.activevideo.usm.plugin.appengine.terminator.TerminatorAppEnginePlugIn" >
+                        <config>
+                                <configitem name="supportedURLs" type="string">*</configitem>
+                                <configitem name="interface" type="string">127.0.0.1:8082</configitem>
+                        </config>
+                </plugin>
+
+                <!--  RTSP app engine plugin -->
+                <plugin id="rtspAppEngine"
+                                active="false" type="app_engine"
+                                class="com.activevideo.usm.plugin.appengine.rtsp.RtspAppEnginePlugIn" >
+                        <config>
+                                <!-- App URL prefixes deciding the use of the RTSP app engine -->
+                                <configitem name="supportedURLs" type="string">rtsp:</configitem>
+                                <!-- VOD server type, currently supported are Kasenna,SeaChange -->
+                                <configitem name="vodServerType" type="string">Kasenna</configitem>
+                                <!-- User agent -->
+                                <configitem name="userAgent" type="string">AVN_RTSP_PLUGIN</configitem>
+                        </config>
+
+                        <!-- The elements under <customconfig> are provided "as is" to the plug-in when it is created -->
+                        <customconfig>
+
+                                <!-- Kasenna VOD configuration -->
+                                <vodserverconfig name="Kasenna">
+                                        <!-- Server IP -->
+                                        <configitem name="IP" type="string">10.210.250.36</configitem>
+                                        <!-- Server Port -->
+                                        <configitem name="Port" type="int">554</configitem>
+                                        <!-- Request timeout in seconds-->
+                                        <configitem name="requestTimeout" type="int">5</configitem>
+                                </vodserverconfig>
+
+                                <!-- Seachange VOD configuration -->
+                                <vodserverconfig name="SeaChange">
+                                </vodserverconfig>
+
+                                <!-- Cisco VOD configuration -->
+                                <vodserverconfig name="Cisco">
+                                </vodserverconfig>
+
+                        </customconfig>
+                </plugin>
+
+
+                <!--  Tag app engine plugin -->
+                <plugin id="tag"
+                                active="true" type="app_engine"
+                                class="com.activevideo.usm.plugin.appengine.tag.TagAppEnginePlugIn">
+                        <config>
+                                <!-- App URL prefixes deciding the use of the TAG app engine -->
+                                <configitem name="supportedURLs" type="string">tag:</configitem>
+                                <!-- RPC host IP or name -->
+                                <configitem name="rpcHost" type="string">192.168.178.246</configitem>
+                                <!-- Port for GameServer SessionManager RPCs -->
+                                <configitem name="smPort" type="int">43255</configitem>
+                                <!-- Port for SessionManager diagnostic RPCs -->
+                                <configitem name="smDiagPort" type="int">43256</configitem>
+                                <!-- Port for SynPeg RPCs (key input) -->
+                                <configitem name="synPegPort" type="int">55554</configitem>
+                                <!-- (Optional) Session Server host name, used by TAG Game Servers to send notifications to the USM -->
+                                <configitem name="sessionServerHost" type="string"></configitem>
+                                <!-- RPC command timeout (seconds). This number is also used as the timeout for
+                                     waiting for the next available TAG GS connection -->
+                                <configitem name="commandTimeout" type="int">5</configitem>
+                                <!-- TCP Connect timeout (seconds)-->
+                <configitem name="connectTimeout" type="int">5</configitem>
+                                <!-- Time to delay reconnection retries to the TAG GS, if the connection should get lost (seconds) -->
+                                <configitem name="reconnectTimeout" type="int">10</configitem>
+                                <!-- The maximum number of seconds to wait for the TAG soft session termination to complete (seconds) -->
+                                <configitem name="softTerminateTimeout" type="int">20</configitem>
+                                <!-- Default TAG channel ID -->
+                                <configitem name="channelID" type="int">1</configitem>
+                                <!-- Default TAG base PID -->
+                                <configitem name="basePID" type="int">0x1e0</configitem>
+                                <!-- Default TAG TSID -->
+                                <configitem name="TSID" type="int">0x1e</configitem>
+                                <!-- Default TAG program number -->
+                                <configitem name="programNumber" type="int">1</configitem>
+                                <!-- Default TAG HTTP streaming port -->
+                                <configitem name="httpStreamingPort" type="int">8888</configitem>
+                        </config>
+                </plugin>
+
+                <!-- Bandwidth management plug-in which interact with the specified list of BRMs -->
+                <plugin id="brm"
+                                active="false" type="bandwidth_resource_manager"
+                                class="com.activevideo.usm.plugin.brm.BandwidthManagementPlugIn">
+                        <config>
+                                <!-- "brm_hosts" - a comma delimited list of BRM instances this USM can
+                                        talk to in order to acquire/release bandwidth. The default value
+                                        is "localhost:9000". -->
+                                <configitem name="brm_hosts" type="string">localhost:9000</configitem>
+
+                                <!-- "cleanup_period" - the interval between each StatusRequest by USM.
+                                        A StatusRequest refreshes the timestamp of USM's owned chunk to
+                                        prevent them from going inactive and being reclaimed. The default
+                                        value is 60000 milliseconds. -->
+                                <configitem name="cleanup_period" type="int">60000</configitem>
+                        </config>
+                </plugin>
+
+                <!-- Fake bandwidth resource manager plugin that can be used for bring up without a real BRM being present -->
+                <plugin id="brm_fake"
+                                active="true" type="bandwidth_resource_manager"
+                                class="com.activevideo.usm.plugin.brm.BandwidthManagementFakePlugIn">
+                        <config>
+                                <!-- This is configuration for the plugin itself:
+                                     Number of ports (starting from "targetPort") that the plugin will allocate (default = 1)
+                                     If <= 0, don't allocate ports at all (maybe used for testing purposes)
+                                -->
+                                <configitem name="targetPortRange" type="int">5000</configitem>
+                                <!-- Some items to be returned as fake info to the session object implementation when it tries to
+                                     acquire bandwidth -->
+                                <!-- mandatory -->
+                                <configitem name="qamFrequency" type="long">750000000</configitem>
+                                <configitem name="qamModulation" type="int">256</configitem>
+                                <configitem name="targetIP" type="string">127.0.0.1</configitem>
+                                <configitem name="targetPort" type="int">55555</configitem>
+                                <!-- optional -->
+                                <configitem name="programNumber" type="int">1</configitem>
+                                <configitem name="transportStreamId" type="int">101</configitem>
+                        </config>
+                </plugin>
+
+                <!-- Semi-Fake resource manager, that copies the resource values from the clientProperties, if present -->
+                <plugin id="brm_preset"
+                                active="false" type="bandwidth_resource_manager"
+                                class="com.activevideo.usm.plugin.brm.PresetBandwidthManagementPlugIn">
+                </plugin>
+
+                <!--  Http diagnostics snmpget,status etc.-->
+                <plugin id="http_diagnostic"
+                                active="true" type="diagnostic_manager"
+                                class="com.activevideo.usm.plugin.diagnostic.http.HttpDiagnosticInterfacePlugIn">
+                        <config>
+                                <!-- This type identifier is used to select this kind of diagnostic manager -->
+                                <configitem name="type" type="string">defaulthttp</configitem>
+                                <!-- The IP/port the diagnostic manager is listening on for HTTP requests -->
+                                <configitem name="interface" type="string">127.0.0.1:8088</configitem>
+                        </config>
+                </plugin>
+
+                <!-- Server Agent, to provide load information for Coyote Point load balancers (and others) -->
+                <plugin id="server_agent"
+                                active="false" type="diagnostic_manager"
+                                class="com.activevideo.usm.plugin.diagnostic.serveragent.ServerAgentPlugIn">
+                        <config>
+                                <!-- The default port for Coyote Point load balancer server agents is 1510 -->
+                                <configitem name="type" type="string">serveragent</configitem>
+                                <!-- The IP/port the diagnostic manager is listening on for HTTP requests -->
+                                <configitem name="interface" type="string">0.0.0.0:1510</configitem>
+                        </config>
+                </plugin>
+
+                <plugin id="clientprops"
+                                active="true" type="client_properties_manager"
+                                class="com.activevideo.usm.client.DefaultClientPropertiesManagerPlugIn">
+                        <config>
+                        </config>
+                        <!-- The elements under <customconfig> are provided "as is" to the plug-in when it is created -->
+                        <customconfig>
+                        </customconfig>
+                </plugin>
+
+                <plugin id="html5"
+                        active="true" type="app_engine" class="com.activevideo.usm.plugin.appengine.html5.Html5AppEnginePlugin">
+                        <config>
+                                <configitem name="supportedURLs" type="string">webkit:</configitem>
+                                <configitem name="html5serverhost" type="string">127.0.0.1</configitem>
+                                <!--<configitem name="html5serverport" type="int">9080</configitem>-->
+                                <!-- port used for events from html5 server to usm plugin -->
+                                <!--<configitem name="html5httpserverport" type="int">8301</configitem>-->
+
+                                <!-- "compositorhost" is used for two purposes. The USM itself uses it to contact the compositor.
+                                It is also used to construct stream URLs that are send back to the client. If there is a NAT between the client
+                                and the compositor it might be necessary to override the address used in stream URLs using "external-compositorhost" -->
+                                <configitem name="compositorhost" type="string"><%=@cloudtv_private_ip%></configitem>
+                                <configitem name="external-compositorhost" type="string"><%=@cloudtv_public_ip%></configitem>
+                                <configitem name="compositorstreamport" type="int">8090</configitem>
+
+                                <!--
+                                <configitem name="keypressonly" type="bool">false</configitem>
+                                <configitem name="compositorcontrolport" type="int">8093</configitem>
+                                <configitem name="compositorstreamporthttps" type="int">8443</configitem>
+                                <configitem name="compositoreventport" type="int">8099</configitem>
+                                <configitem name="cookieputurl" type="string">http://mycookieserver/put.php?clientid=[%c]</configitem>
+                                <configitem name="cookiegeturl" type="string">http://mycookieserver/get.php?clientid=[%c]</configitem>
+                                <configitem name="compositorstartframeroot" type="string">NO DEFAULT VALUE</configitem>
+                                <configitem name="compositorsessionlimit" type="int">Integer.MAX_VALUE</configitem>
+                                <configitem name="compositoruniqueid" type="string">NO DEFAULT VALUE</configitem>
+                                <configitem name="cookieserverconnecttimeout" type="int">100</configitem>
+                                <configitem name="cookieserverreadtimeout" type="int">100</configitem>
+                                <configitem name="resumelimit" type="int">10</configitem>
+                                <configitem name="resumetimeout" type="int">1000</configitem>
+                                <configitem name="suspendlimit" type="int">10</configitem>
+                                <configitem name="cookieserverconnecttimeout" type="int">100</configitem>
+                                <configitem name="cookieserverreadtimeout" type="int">100</configitem>
+                                -->
+                                <configitem name="defaultAppUrl" type="string">webkit:http://www.naver.com</configitem>
+                                <configitem name="cookieputurl" type="string">http://<%=@cloudtv_public_ip%>/settopdata/put.php?clientid=[%c]</configitem>
+                                <configitem name="cookiegeturl" type="string">http://<%=@cloudtv_public_ip%>/settopdata/get.php?clientid=[%c]</configitem>
+                        </config>
+                </plugin>
+        </plugins>
+
+        <!-- Configuration items for the USM core itself -->
+        <usmConfiguration>
+                <config>
+            <!-- Session limit - set to <= 0 for unlimited
+            -->
+            <configitem name="sessionLimit" type="int">1000</configitem>
+
+            <configitem name="h264enabled" type="bool">true</configitem>
+
+                        <!-- The maximum depth of the app stack. If the nesting on the stack exceeds this limit,
+                             the concerned client session is terminated by USM.
+                        -->
+                        <!--<configitem name="maxAppStackSize" type="int">50</configitem>-->
+                        <!-- The default session inactivity timeout in seconds.
+                        -->
+                        <!--<configitem name="sessionInactivityTimeout" type="int">7200</configitem>-->
+
+                </config>
+        </usmConfiguration>
+</USM>

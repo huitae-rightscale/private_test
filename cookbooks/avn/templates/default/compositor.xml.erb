@@ -1,0 +1,62 @@
+<?xml version="1.0"?>
+<compositor>
+
+    <!--
+     Log levels:
+        0: Emergency, not emitted
+        1: Alert, not emitted
+        2: Critical, server is unstable
+        3: Error, session is unstable
+        4: Warning, client stream is unstable
+        5: Notice, server/session enter/exit
+        6: Info, server event
+        7: Debug, session event
+        8: Fine, scene event
+        9: Finer, loader/socket event
+       10: Trace, loader/socket data
+     -->
+    
+    <logger>7</logger>
+    <!--
+    <logger>10</logger>
+    -->
+
+    <loader>
+
+        <!-- Base URL for the transcoder -->
+        <transcoder>http://<%=@trasncoder_ip%>/cgi-bin/transcode.fcgi</transcoder>
+
+        <!-- Fragment cache size in bytes -->
+        <media>
+            <cache>1073741824</cache>
+        </media>
+
+        <!-- Parts loading -->
+        <parts>
+            <proxy>http://127.0.0.1:3128</proxy>
+        </parts>
+
+        <!-- MP4 loading -->
+        <!--
+        <mp4>
+            <proxy>http://127.0.0.1:3128</proxy>
+        </mp4>
+        -->
+        
+        <!-- Scaler cluster -->
+        <!--
+        <live>
+        <cluster>
+            <query>URL_CLUSTER_A_1</query>
+            <query>URL_CLUSTER_A_2</query>
+        </cluster>
+        <cluster>
+            <query>URL_CLUSTER_B_1</query>
+            <query>URL_CLUSTER_B_2</query>
+        </cluster>
+        </live>
+        -->
+    </loader>
+
+</compositor>
+
