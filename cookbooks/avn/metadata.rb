@@ -7,8 +7,8 @@ version           "0.1"
 depends "rightscale"
 
 recipe "avn::default"           , "default recipe"
-recipe "avn::install_cloudtv"   , "Install & configure cloudtv app"
-recipe "avn::install_transcoder", "Install & configure transcoder"
+#recipe "avn::install_cloudtv"   , "Install & configure cloudtv app"
+#recipe "avn::install_transcoder", "Install & configure transcoder"
 
 attribute 'avn/tier',
     :display_name   => "tier",
