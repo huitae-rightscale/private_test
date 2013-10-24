@@ -128,7 +128,7 @@ elsif node[:avn][:tier] == "transcoder"
   end
 
   template "/etc/lighttpd/lighttpd.conf" do
-    source "lighttpd.conf.erb"
+    source "lighttpd.conf.trans.erb"
     owner "rendercast"
     group "ctvadmin"
     mode "0664"
