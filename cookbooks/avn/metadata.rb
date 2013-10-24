@@ -22,12 +22,12 @@ attribute 'avn/transcoder_ip',
     :display_name   => "transcoder_ip",
     :description    => "IP of transcoder server",
     :type           => "string",
-    :required       => "required",
+    :required       => "optional",
     :recipes        => [ "avn::default" ]
 
 attribute 'avn/cluster_master',
     :display_name   => "transcoder_cluster",
-    :description    => "IP or FQDN of transcoder server",
+    :description    => "IP or FQDN of transcoder master",
     :type           => "string",
     :required       => "optional",
     :recipes        => [ "avn::default" ]

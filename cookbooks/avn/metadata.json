@@ -1,71 +1,71 @@
 {
   "groupings": {
   },
-  "suggestions": {
+  "providing": {
   },
+  "conflicting": {
+  },
+  "maintainer_email": "",
+  "name": "avn",
   "attributes": {
+    "avn/transcoder_ip": {
+      "calculated": false,
+      "type": "string",
+      "choice": [
+
+      ],
+      "required": "optional",
+      "display_name": "transcoder_ip",
+      "recipes": [
+        "avn::default"
+      ],
+      "description": "IP of transcoder server"
+    },
+    "avn/cluster_master": {
+      "calculated": false,
+      "type": "string",
+      "choice": [
+
+      ],
+      "required": "optional",
+      "display_name": "transcoder_cluster",
+      "recipes": [
+        "avn::default"
+      ],
+      "description": "IP or FQDN of transcoder master"
+    },
     "avn/tier": {
       "calculated": false,
+      "type": "string",
       "choice": [
         "cloudtv",
         "transcoder"
       ],
+      "required": "required",
       "display_name": "tier",
-      "description": "Server Role",
       "recipes": [
         "avn::default"
       ],
-      "required": "required",
-      "type": "string"
-    },
-    "avn/cluster_master": {
-      "calculated": false,
-      "choice": [
-
-      ],
-      "display_name": "transcoder_cluster",
-      "description": "IP or FQDN of transcoder server",
-      "recipes": [
-        "avn::default"
-      ],
-      "required": "optional",
-      "type": "string"
-    },
-    "avn/transcoder_ip": {
-      "calculated": false,
-      "choice": [
-
-      ],
-      "display_name": "transcoder_ip",
-      "description": "IP of transcoder server",
-      "recipes": [
-        "avn::default"
-      ],
-      "required": "required",
-      "type": "string"
+      "description": "Server Role"
     }
   },
-  "recommendations": {
+  "suggestions": {
   },
+  "license": "",
   "replacing": {
-  },
-  "platforms": {
-  },
-  "maintainer": "",
-  "maintainer_email": "",
-  "conflicting": {
-  },
-  "dependencies": {
-    "rightscale": ">= 0.0.0"
   },
   "version": "0.1.1",
   "recipes": {
     "avn::default": "default recipe"
   },
-  "description": "Install & configure avn application",
-  "providing": {
+  "recommendations": {
   },
-  "license": "",
+  "platforms": {
+  },
   "long_description": "",
-  "name": "avn"
+  "dependencies": {
+    "rightscale": ">= 0.0.0"
+  },
+  "maintainer": "",
+  "description": "Install & configure avn application"
 }
