@@ -16,24 +16,18 @@ attribute 'avn/tier',
     :type           => "string",
     :required       => "required",
     :choice         => [ "cloudtv", "transcoder" ],
-    :recipes        => [ 
-       "avn::default" 
-    ]
+    :recipes        => [ "avn::default" ]
 
 attribute 'avn/transcoder_ip',
     :display_name   => "transcoder_ip",
     :description    => "IP of transcoder server",
     :type           => "string",
     :required       => "required",
-    :recipes        => [ 
-       "avn::default"
-    ]
+    :recipes        => [ "avn::default" ]
 
 attribute 'avn/cluster_master',
     :display_name   => "transcoder_cluster",
     :description    => "IP or FQDN of transcoder server",
     :type           => "string",
     :required       => "optional",
-    :recipes        => [ 
-       "avn::default"
-    ]
+    :recipes        => [ "avn::default" ]
