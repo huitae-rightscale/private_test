@@ -2,7 +2,7 @@ maintainer        ""
 maintainer_email  ""
 license           ""
 description       "Install & configure avn application"
-version           "0.1"
+version           "0.1.1"
 
 depends "rightscale"
 
