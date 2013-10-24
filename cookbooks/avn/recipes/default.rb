@@ -102,7 +102,7 @@ elsif node[:avn][:tier] == "trasncoder"
     mode "0664"
   end
 
-  if node[:avn][:transcoder_master]== "master"
+  if node[:avn][:transcoder_master] == "master" 
     node[:transcoder_master_ip] = node[:avn][:private_ip]
   elsif node[:avn][:transcoder_master]== "slave"
     node[:transcoder_master_ip] = node[:avn][:cluster_master_ip]
