@@ -95,15 +95,15 @@ if node[:avn][:tier] == "cloudtv"
   end
 
   service "compositor" do
-    action :restart
+    action :reload
   end
 
   service "usm" do
-    action :restart
+    action :reload
   end
 
   service "lighttpd" do
-    action :restart
+    action :reload
   end
 
 elsif node[:avn][:tier] == "transcoder"
@@ -132,11 +132,11 @@ elsif node[:avn][:tier] == "transcoder"
   end
 
   service "lighttpd" do
-    action :restart
+    action :reload
   end
 
   service "riak" do
-    action :restart
+    action :start
   end
 end
  
