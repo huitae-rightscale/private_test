@@ -45,7 +45,7 @@ cookbook_file "/etc/yum.repos.d/activevideo-H5.repo" do
   owner "root"
   group "root"
   mode 0644
-  cookbook "default"
+  cookbook "avn::default"
 end
 
 package "jdk" do
@@ -65,7 +65,7 @@ if node[:avn][:tier] == "cloudtv"
     owner "rendercast"
     group "ctvadmin"
     mode "0664"
-    cookbook "default"
+    cookbook "avn::default"
     variables({
       :cloudtv_public_ip    => node[:avn][:public_ip],
       :cloudtv_private_ip   => node[:avn][:private_ip]
@@ -77,7 +77,7 @@ if node[:avn][:tier] == "cloudtv"
     owner "rendercast"
     group "ctvadmin"
     mode "0664"
-    cookbook "default"
+    cookbook "avn::default"
   end
 
   template "/etc/opt/programs.xml" do
@@ -85,7 +85,7 @@ if node[:avn][:tier] == "cloudtv"
     owner "rendercast"
     group "ctvadmin"
     mode "0664"
-    cookbook "default"
+    cookbook "avn::default"
   end
 
   template "/etc/opt/compositor.xml" do
@@ -93,7 +93,7 @@ if node[:avn][:tier] == "cloudtv"
     owner "rendercast"
     group "ctvadmin"
     mode "0664"
-    cookbook "default"
+    cookbook "avn::default"
     variables({
       :transcoder_ip    => node[:avn][:transcoder_ip],
     })
@@ -105,7 +105,7 @@ elsif node[:avn][:tier] == "trasncoder"
     owner "rendercast"
     group "ctvadmin"
     mode "0664"
-    cookbook "default"
+    cookbook "avn::default"
   end
 
   template "/etc/opt/transcoder_config.pl" do
@@ -113,7 +113,7 @@ elsif node[:avn][:tier] == "trasncoder"
     owner "rendercast"
     group "ctvadmin"
     mode "0664"
-    cookbook "default"
+    cookbook "avn::default"
     variables({
       :riak_master_ip   => node[:avn][:cluster_master],
     })
