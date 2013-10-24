@@ -106,7 +106,7 @@ if node[:avn][:tier] == "cloudtv"
     action :restart
   end
 
-elsif node[:avn][:tier] == "trasncoder"
+elsif node[:avn][:tier] == "transcoder"
 
   if node[:avn][:transcoder_master] == "master" 
     master_ip = node[:avn][:private_ip]
