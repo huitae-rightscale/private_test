@@ -42,10 +42,8 @@ end
 
 cookbook_file "/etc/yum.repos.d/activevideo-H5.repo" do
   source "activevideo-H5.repo"
-  owner "root"
-  group "root"
-  mode 0644
-  cookbook "avn::default"
+  action :create_if_missing
+  cookbook "default"
 end
 
 package "jdk" do
