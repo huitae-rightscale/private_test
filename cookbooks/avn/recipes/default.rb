@@ -94,18 +94,24 @@ if node[:avn][:tier] == "cloudtv"
     })
   end
 
-elsif node[:avn][:tier] == "trasncoder"
-  cookbook_file "/etc/lighttpd/lighttpd.conf" do
-    source "lighttpd.conf"
-    owner "rendercast"
-    group "ctvadmin"
-    mode "0664"
+  service "compositor" do
+    action :restart
   end
 
+  service "usm" do
+    action :restart
+  end
+
+  service "lighttpd" do
+    action :restart
+  end
+
+elsif node[:avn][:tier] == "trasncoder"
+
   if node[:avn][:transcoder_master] == "master" 
-    node[:transcoder_master_ip] = node[:avn][:private_ip]
+    master_ip = node[:avn][:private_ip]
   elsif node[:avn][:transcoder_master]== "slave"
-    node[:transcoder_master_ip] = node[:avn][:cluster_master_ip]
+    master_ip = node[:avn][:cluster_master_ip]
   end
 
   template "/etc/opt/transcoder_config.pl" do
@@ -114,8 +120,23 @@ elsif node[:avn][:tier] == "trasncoder"
     group "ctvadmin"
     mode "0664"
     variables({
-      :riak_master_ip   => node[:transcoder_master_ip]
+      :riak_master_ip   => master_ip
     })
+  end
+
+  template "/etc/lighttpd/lighttpd.conf" do
+    source "lighttpd.conf.erb"
+    owner "rendercast"
+    group "ctvadmin"
+    mode "0664"
+  end
+
+  service "lighttpd" do
+    action :restart
+  end
+
+  service "riak" do
+    action :restart
   end
 end
  
