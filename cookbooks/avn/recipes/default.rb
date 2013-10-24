@@ -45,6 +45,7 @@ cookbook_file "/etc/yum.repos.d/activevideo-H5.repo" do
   owner "root"
   group "root"
   mode 0644
+  cookbook "default"
 end
 
 package "jdk" do
@@ -58,7 +59,64 @@ node[:avn][:packages].each do |p|
 end 
 
 if node[:avn][:tier] == "cloudtv"
+
+  template "/etc/opt/usm.xml" do
+    source "usm.xml.erb"
+    owner "rendercast"
+    group "ctvadmin"
+    mode "0664"
+    cookbook "default"
+    variables({
+      :cloudtv_public_ip    => node[:avn][:public_ip],
+      :cloudtv_private_ip   => node[:avn][:private_ip]
+    })
+  end
+
+  template "/etc/opt/devices.xml" do
+    source "devices.xml.erb"
+    owner "rendercast"
+    group "ctvadmin"
+    mode "0664"
+    cookbook "default"
+  end
+
+  template "/etc/opt/programs.xml" do
+    source "programs.xml.erb"
+    owner "rendercast"
+    group "ctvadmin"
+    mode "0664"
+    cookbook "default"
+  end
+
+  template "/etc/opt/compositor.xml" do
+    source "compositor.xml.erb"
+    owner "rendercast"
+    group "ctvadmin"
+    mode "0664"
+    cookbook "default"
+    variables({
+      :transcoder_ip    => node[:avn][:transcoder_ip],
+    })
+  end
+
 elsif node[:avn][:tier] == "trasncoder"
+  cookbook_file "/etc/lighttpd/lighttpd.conf" do
+    source "lighttpd.conf"
+    owner "rendercast"
+    group "ctvadmin"
+    mode "0664"
+    cookbook "default"
+  end
+
+  template "/etc/opt/transcoder_config.pl" do
+    source "transcoder_config.pl.erb"
+    owner "rendercast"
+    group "ctvadmin"
+    mode "0664"
+    cookbook "default"
+    variables({
+      :riak_master_ip   => node[:avn][:cluster_master],
+    })
+  end
 end
  
-rightscale_marker :end

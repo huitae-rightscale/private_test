@@ -26,7 +26,14 @@ attribute 'avn/transcoder_ip',
     :type           => "string",
     :required       => "required",
     :recipes        => [ 
-       "avn::install_cloudtv", 
-       "avn::install_transcoder" 
+       "avn::default"
     ]
 
+attribute 'avn/cluster_master',
+    :display_name   => "transcoder_cluster",
+    :description    => "IP or FQDN of transcoder server",
+    :type           => "string",
+    :required       => "optional",
+    :recipes        => [ 
+       "avn::default"
+    ]
