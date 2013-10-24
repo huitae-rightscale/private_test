@@ -33,7 +33,7 @@ when "cloudtv"
         "cloudtv",
         "settopdata"
     ]
-when "trasncoder"
+when "transcoder"
     node[:avn][:packages] = [
         "transcoder",
         "riak"
