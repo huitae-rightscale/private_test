@@ -25,7 +25,15 @@ attribute 'avn/transcoder_ip',
     :required       => "optional",
     :recipes        => [ "avn::default" ]
 
-attribute 'avn/cluster_master',
+attribute 'avn/transcoder_master',
+    :display_name   => "cluster_master",
+    :description    => "Select master of transcoder master",
+    :type           => "string",
+    :required       => "optional",
+    :choice         => [ "master", "slave" ],
+    :recipes        => [ "avn::default" ]
+
+attribute 'avn/cluster_master_ip',
     :display_name   => "transcoder_cluster",
     :description    => "IP or FQDN of transcoder master",
     :type           => "string",

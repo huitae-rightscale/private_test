@@ -1,71 +1,85 @@
 {
-  "groupings": {
-  },
-  "providing": {
-  },
   "conflicting": {
   },
-  "maintainer_email": "",
-  "name": "avn",
-  "attributes": {
-    "avn/transcoder_ip": {
-      "calculated": false,
-      "type": "string",
-      "choice": [
-
-      ],
-      "required": "optional",
-      "display_name": "transcoder_ip",
-      "recipes": [
-        "avn::default"
-      ],
-      "description": "IP of transcoder server"
-    },
-    "avn/cluster_master": {
-      "calculated": false,
-      "type": "string",
-      "choice": [
-
-      ],
-      "required": "optional",
-      "display_name": "transcoder_cluster",
-      "recipes": [
-        "avn::default"
-      ],
-      "description": "IP or FQDN of transcoder master"
-    },
-    "avn/tier": {
-      "calculated": false,
-      "type": "string",
-      "choice": [
-        "cloudtv",
-        "transcoder"
-      ],
-      "required": "required",
-      "display_name": "tier",
-      "recipes": [
-        "avn::default"
-      ],
-      "description": "Server Role"
-    }
-  },
-  "suggestions": {
-  },
-  "license": "",
-  "replacing": {
-  },
   "version": "0.1.1",
+  "platforms": {
+  },
+  "maintainer_email": "",
+  "maintainer": "",
   "recipes": {
     "avn::default": "default recipe"
   },
   "recommendations": {
   },
-  "platforms": {
+  "name": "avn",
+  "replacing": {
   },
-  "long_description": "",
+  "description": "Install & configure avn application",
+  "attributes": {
+    "avn/cluster_master_ip": {
+      "display_name": "transcoder_cluster",
+      "type": "string",
+      "required": "optional",
+      "recipes": [
+        "avn::default"
+      ],
+      "description": "IP or FQDN of transcoder master",
+      "choice": [
+
+      ],
+      "calculated": false
+    },
+    "avn/transcoder_master": {
+      "display_name": "cluster_master",
+      "type": "string",
+      "required": "optional",
+      "recipes": [
+        "avn::default"
+      ],
+      "description": "Select master of transcoder master",
+      "choice": [
+        "master",
+        "slave"
+      ],
+      "calculated": false
+    },
+    "avn/transcoder_ip": {
+      "display_name": "transcoder_ip",
+      "type": "string",
+      "required": "optional",
+      "recipes": [
+        "avn::default"
+      ],
+      "description": "IP of transcoder server",
+      "choice": [
+
+      ],
+      "calculated": false
+    },
+    "avn/tier": {
+      "display_name": "tier",
+      "type": "string",
+      "required": "required",
+      "recipes": [
+        "avn::default"
+      ],
+      "description": "Server Role",
+      "choice": [
+        "cloudtv",
+        "transcoder"
+      ],
+      "calculated": false
+    }
+  },
+  "providing": {
+  },
   "dependencies": {
     "rightscale": ">= 0.0.0"
   },
-  "maintainer": "",
-  "description": "Install & configure avn application"
+  "license": "",
+  "suggestions": {
+  },
+  "groupings": {
+  },
+  "long_description": ""
 }
