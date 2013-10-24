@@ -95,14 +95,17 @@ if node[:avn][:tier] == "cloudtv"
   end
 
   service "compositor" do
+    supports :reload => true
     action :reload
   end
 
   service "usm" do
+    supports :reload => true
     action :reload
   end
 
   service "lighttpd" do
+    supports :reload => true
     action :reload
   end
 
@@ -132,6 +135,7 @@ elsif node[:avn][:tier] == "transcoder"
   end
 
   service "lighttpd" do
+    supports :reload => true
     action :reload
   end
 
