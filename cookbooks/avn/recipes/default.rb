@@ -102,13 +102,19 @@ elsif node[:avn][:tier] == "trasncoder"
     mode "0664"
   end
 
+  if node[:avn][:transcoder_master]== "master"
+    node[:transcoder_master_ip] = node[:avn][:private_ip]
+  elsif node[:avn][:transcoder_master]== "slave"
+    node[:transcoder_master_ip] = node[:avn][:cluster_master_ip]
+  end
+
   template "/etc/opt/transcoder_config.pl" do
     source "transcoder_config.pl.erb"
     owner "rendercast"
     group "ctvadmin"
     mode "0664"
     variables({
-      :riak_master_ip   => node[:avn][:cluster_master],
+      :riak_master_ip   => node[:transcoder_master_ip]
     })
   end
 end
