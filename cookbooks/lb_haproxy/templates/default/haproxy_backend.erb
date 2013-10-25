@@ -1,0 +1,26 @@
+backend <%= @backend_name_line %>
+
+    <% if @mode == "http" %>
+        mode http
+    <% elsif @mode == "tcp" %>
+        mode http
+    <% end %>
+        balance <%= @algorithm %>
+        
+        # Timeout
+        timeout server <%= @timeout_server %>
+
+        # Haproxy status page
+        <%= @stats_uri_line %>
+        <%= @stats_auth_line %>
+
+        # when cookie persistence is required
+        cookie SERVERID insert indirect nocache
+
+        # When internal servers support a status page
+        <%= @health_uri_line %>
+        <%= @health_check_line %>
+
+        # Special server line that allow HAProxy to start with cookies enabled and no valid servers.
+        server disabled-server 127.0.0.1:1 disabled
+

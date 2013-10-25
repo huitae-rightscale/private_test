@@ -9,8 +9,10 @@ end
 
 log "Installing php"
 
-package "php" do
-    action :install
-end
+node[:app][:packages].each do |p|
+    package p do
+      action :install
+    end
+end 
 
 

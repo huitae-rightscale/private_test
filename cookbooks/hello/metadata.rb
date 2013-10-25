@@ -16,7 +16,7 @@ attribute 'hello/messages',
 :recipes => [ "hello::default" ],
 :default => "Hi There! This is a Test Message!"
 
-attribute 'packages',
+attribute 'app/packages',
 :display_name => "Install packages",
 :description => "Install packages",
 :type => "array",

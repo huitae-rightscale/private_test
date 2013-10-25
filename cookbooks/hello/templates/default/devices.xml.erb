@@ -1,0 +1,1012 @@
+<?xml version="1.0" encoding="utf-8"?>
+<devices xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.avnetworks.com/Devices">
+        <deviceClasses>
+                <!-- Default Codec Profile -->
+                <configitem name="display" type="string">hd720</configitem>
+                <configitem name="videoCodec" type="string">mpeg2</configitem>
+                <configitem name="audioCodec" type="string">ac3</configitem>
+                <configitem name="abps" type="int">128</configitem>
+                <configitem name="achannels" type="int">2</configitem>
+                <configitem name="bitrateMode" type="string">vbr</configitem>
+                <!---<configitem name="deviceBitrate" type="int">NO DEFAULT, use to override bitrate from programs.xml</configitem>-->
+                <!-- Default Stream Profile -->
+                <configitem name="TSProgramID" type="int">1</configitem>
+                <configitem name="TSProgramPID" type="int">64</configitem>
+                <configitem name="TSVideoPID" type="int">65</configitem>
+                <configitem name="TSAudioPID" type="int">66</configitem>
+                <configitem name="TSPcrPID" type="int">67</configitem>
+                <configitem name="initialIFrames" type="int">5</configitem>
+                <configitem name="sessionTsPsiInterval" type="int">1</configitem>
+        <!-- Default overlays -->
+        <configitem name="overlayEncodings" type="string">png</configitem>
+
+        <!--
+    +++++++++++++++++++++++++++++++++++++++++++++++++++
+           Cable Transport (QAM)
+    +++++++++++++++++++++++++++++++++++++++++++++++++++
+    -->
+                <deviceClass name="CableTransport">
+                        <configitem name="transport" type="string">udp</configitem>
+                        <configitem name="allocateResources" type="string">true</configitem>
+                        <!-- Streaming Profile -->
+                        <configitem name="bitrateMode" type="string">cbr</configitem>
+                        <configitem name="TSProgramPID" type="int">480</configitem>
+                        <configitem name="TSVideoPID" type="int">481</configitem>
+                        <configitem name="TSAudioPID" type="int">482</configitem>
+                        <configitem name="TSPcrPID" type="int">481</configitem>
+                        <configitem name="initialIFrames" type="int">20</configitem>
+                        <configitem name="intraMbRefreshRate" type="int">500000</configitem>
+                        <configitem name="intraMbRefreshTimeout" type="int">30</configitem>
+                        <deviceClass name="StandardCableClient">
+      </deviceClass>
+                        <!-- Device Group 1 class -->
+                        <deviceClass name="Group1Device">
+                                <configitem name="deviceGroup" type="int">1</configitem>
+                                <!-- Group 1 device classes -->
+                                <deviceClass name="UnknownCableSTB">
+                                        <configitem name="manufacturerID" type="int">255</configitem>
+                                        <configitem name="modelID" type="int">0</configitem>
+                                        <configitem name="vendor" type="string">unknown</configitem>
+                                </deviceClass>
+                        </deviceClass>
+
+                        <!-- Generic Pace box base class (group 2) -->
+                        <deviceClass name="GenericPace">
+                                <configitem name="deviceGroup" type="int">2</configitem>
+                                <configitem name="aspect" type="string">dar</configitem>
+                                <configitem name="keyMap" type="string">MotorolaStandard</configitem>
+                                <configitem name="vendor" type="string">Pace</configitem>
+                                <configitem name="manufacturerID" type="int">12</configitem>
+                                <configitem name="generateKeyUps" type="bool">false</configitem>
+                                <!-- TODO: Optimize this to a lower value -->
+                                <configitem name="initialIFrames" type="int">20</configitem>
+                                <!-- This is the default modelId used for requests that specify a model id not available -->
+                                <deviceClass name="DEFAULT-PACE">
+                                        <configitem name="modelID" type="int">0</configitem>
+                                </deviceClass>
+                                <deviceClass name="Pace TDC575D Vegas">
+                                        <configitem name="modelID" type="int">1283</configitem>
+                                        <configitem name="display" type="string">ntsc</configitem>
+                                </deviceClass>
+                                <deviceClass name="Pace TDC577X Vegas Host">
+                                        <configitem name="modelID" type="int">1288</configitem>
+                                        <configitem name="display" type="string">ntsc</configitem>
+                                </deviceClass>
+                                <deviceClass name="Pace RNG110">
+                                        <configitem name="modelID" type="int">1301</configitem>
+                                </deviceClass>
+                                <deviceClass name="Pace RNG150">
+                                        <configitem name="modelID" type="int">1309</configitem>
+                                </deviceClass>
+                                <!--  The following device model ID is used by HD Moto STB clients to launch SD sessions-->
+                                <deviceClass name="Pace HD-to-SD resolution switch fake device">
+                                        <configitem name="modelID" type="int">2999</configitem>
+                                        <configitem name="display" type="string">ntsc</configitem>
+                                </deviceClass>
+                        </deviceClass>
+
+                        <!-- Generic Motorola box base class (group 2) -->
+                        <deviceClass name="GenericMotorola">
+                                <configitem name="deviceGroup" type="int">2</configitem>
+                                <configitem name="aspect" type="string">dar</configitem>
+                                <configitem name="keyMap" type="string">MotorolaStandard</configitem>
+                                <configitem name="vendor" type="string">Motorola</configitem>
+                                <configitem name="manufacturerID" type="int">9</configitem>
+                                <configitem name="generateKeyUps" type="bool">false</configitem>
+                                <!-- TODO: Optimize this to a lower value -->
+                                <configitem name="initialIFrames" type="int">20</configitem>
+                                <!-- This is the default modelId used for requests that specify a model id not available -->
+                                <deviceClass name="DEFAULT-MOTOROLA">
+                                        <configitem name="modelID" type="int">0</configitem>
+                                </deviceClass>
+                                <!--  Beginning of list of Moto STB models that are not in the TVWorks document, but were in AVN's devices.xml -->
+                                <deviceClass name="DCT-700">
+                                        <configitem name="modelID" type="int">1</configitem>
+                                        <configitem name="display" type="string">ntsc</configitem>
+                                </deviceClass>
+                                <deviceClass name="DCT-1000">
+                                        <configitem name="modelID" type="int">2</configitem>
+                                        <configitem name="display" type="string">ntsc</configitem>
+                                </deviceClass>
+                                <deviceClass name="DCT-1200">
+                                        <configitem name="modelID" type="int">3</configitem>
+                                        <configitem name="display" type="string">ntsc</configitem>
+                                </deviceClass>
+                                <deviceClass name="DCT-1700">
+                                        <configitem name="modelID" type="int">4</configitem>
+                                        <configitem name="display" type="string">ntsc</configitem>
+                                </deviceClass>
+                                <deviceClass name="DCT-1800">
+                                        <configitem name="modelID" type="int">5</configitem>
+                                        <configitem name="display" type="string">ntsc</configitem>
+                                </deviceClass>
+                                <deviceClass name="DCT-2000">
+                                        <configitem name="modelID" type="int">6</configitem>
+                                        <configitem name="display" type="string">ntsc</configitem>
+                                </deviceClass>
+                                <deviceClass name="DCT-2500">
+                                        <configitem name="modelID" type="int">7</configitem>
+                                        <configitem name="display" type="string">ntsc</configitem>
+                                </deviceClass>
+                                <deviceClass name="DCT-6100">
+                                        <configitem name="modelID" type="int">10</configitem>
+                                </deviceClass>
+                                <deviceClass name="DCT-6200">
+                                        <configitem name="modelID" type="int">11</configitem>
+                                </deviceClass>
+                                <deviceClass name="DCT-6208">
+                                        <configitem name="modelID" type="int">12</configitem>
+                                </deviceClass>
+                                <deviceClass name="DCT-6412-6416">
+                                        <configitem name="modelID" type="int">13</configitem>
+                                </deviceClass>
+                                <deviceClass name="DCT-2000">
+                                        <configitem name="modelID" type="int">17</configitem>
+                                        <configitem name="display" type="string">ntsc</configitem>
+                                </deviceClass>
+                        <deviceClass name="DCX-700">
+                                        <configitem name="modelID" type="int">2059</configitem>
+                                </deviceClass>
+                                <deviceClass name="DCX-3400M">
+                                        <configitem name="modelID" type="int">2062</configitem>
+                                </deviceClass>
+                                <!--  End of list of Moto STB models that are not in the TVWorks document, but were in AVN's devices.xml -->
+
+                                <!--  Beginning of list of Moto STB models that are in the TVWorks document -->
+                                <deviceClass name="DCT-2000 Platform">
+                                        <configitem name="modelID" type="int">8</configitem>
+                                        <configitem name="display" type="string">ntsc</configitem>
+                                </deviceClass>
+                                <deviceClass name="DCT-2000 AQAM">
+                                        <configitem name="modelID" type="int">9</configitem>
+                                        <configitem name="display" type="string">ntsc</configitem>
+                                </deviceClass>
+                                <deviceClass name="DCT-2000 ROM-less Phase 7">
+                                        <configitem name="modelID" type="int">16</configitem>
+                                        <configitem name="display" type="string">ntsc</configitem>
+                                </deviceClass>
+                                <deviceClass name="DCT-2000 ROM-less Phase 8">
+                                        <configitem name="modelID" type="int">17</configitem>
+                                        <configitem name="display" type="string">ntsc</configitem>
+                                </deviceClass>
+                                <deviceClass name="DCT-2000 ROM-less Phase 9">
+                                        <configitem name="modelID" type="int">18</configitem>
+                                        <configitem name="display" type="string">ntsc</configitem>
+                                </deviceClass>
+                                <deviceClass name="DCT-2500 Platform">
+                                        <configitem name="modelID" type="int">80</configitem>
+                                        <configitem name="display" type="string">ntsc</configitem>
+                                </deviceClass>
+                                <deviceClass name="DCT-2500 Quake Version">
+                                        <configitem name="modelID" type="int">81</configitem>
+                                        <configitem name="display" type="string">ntsc</configitem>
+                                </deviceClass>
+                                <deviceClass name="DCT-2500 Platform Phase 2">
+                                        <configitem name="modelID" type="int">82</configitem>
+                                        <configitem name="display" type="string">ntsc</configitem>
+                                </deviceClass>
+                                <deviceClass name="DCT-2500 Platform Phase 3">
+                                        <configitem name="modelID" type="int">83</configitem>
+                                        <configitem name="display" type="string">ntsc</configitem>
+                                </deviceClass>
+                                <deviceClass name="DCT-2500 Platform Phase 4">
+                                        <configitem name="modelID" type="int">84</configitem>
+                                        <configitem name="display" type="string">ntsc</configitem>
+                                </deviceClass>
+                                <deviceClass name="DCT-1700 Platform Phase 4">
+                                        <configitem name="modelID" type="int">85</configitem>
+                                        <configitem name="display" type="string">ntsc</configitem>
+                                </deviceClass>
+                                <deviceClass name="DCT-1800 Reserved 1">
+                                        <configitem name="modelID" type="int">86</configitem>
+                                        <configitem name="display" type="string">ntsc</configitem>
+                                </deviceClass>
+                                <deviceClass name="DCT-1800 Reserved 2">
+                                        <configitem name="modelID" type="int">87</configitem>
+                                        <configitem name="display" type="string">ntsc</configitem>
+                                </deviceClass>
+                                <deviceClass name="DCT-1800 Reserved 3">
+                                        <configitem name="modelID" type="int">88</configitem>
+                                        <configitem name="display" type="string">ntsc</configitem>
+                                </deviceClass>
+                                <deviceClass name="DCT-1800 Reserved 4">
+                                        <configitem name="modelID" type="int">89</configitem>
+                                        <configitem name="display" type="string">ntsc</configitem>
+                                </deviceClass>
+                                <deviceClass name="DCT-1800 Reserved 5">
+                                        <configitem name="modelID" type="int">90</configitem>
+                                        <configitem name="display" type="string">ntsc</configitem>
+                                </deviceClass>
+                                <deviceClass name="DCT-1800 Reserved 6">
+                                        <configitem name="modelID" type="int">91</configitem>
+                                        <configitem name="display" type="string">ntsc</configitem>
+                                </deviceClass>
+                                <deviceClass name="DCT-1800 Reserved 7">
+                                        <configitem name="modelID" type="int">92</configitem>
+                                        <configitem name="display" type="string">ntsc</configitem>
+                                </deviceClass>
+                                <deviceClass name="DCT-1800 Reserved 8">
+                                        <configitem name="modelID" type="int">93</configitem>
+                                        <configitem name="display" type="string">ntsc</configitem>
+                                </deviceClass>
+                                <deviceClass name="DCT-1800 Reserved 9">
+                                        <configitem name="modelID" type="int">94</configitem>
+                                        <configitem name="display" type="string">ntsc</configitem>
+                                </deviceClass>
+                                <deviceClass name="DCT-1800 Reserved 10">
+                                        <configitem name="modelID" type="int">95</configitem>
+                                        <configitem name="display" type="string">ntsc</configitem>
+                                </deviceClass>
+                                <deviceClass name="DCT-1700 Platform">
+                                        <configitem name="modelID" type="int">96</configitem>
+                                        <configitem name="display" type="string">ntsc</configitem>
+                                </deviceClass>
+                                <deviceClass name="DCT-1800 Platform">
+                                        <configitem name="modelID" type="int">97</configitem>
+                                        <configitem name="display" type="string">ntsc</configitem>
+                                </deviceClass>
+                                <deviceClass name="DCT-1700 Phase 1 Cost Reduction">
+                                        <configitem name="modelID" type="int">98</configitem>
+                                        <configitem name="display" type="string">ntsc</configitem>
+                                </deviceClass>
+                                <deviceClass name="DCT-1700 Platform Phase 2">
+                                        <configitem name="modelID" type="int">99</configitem>
+                                        <configitem name="display" type="string">ntsc</configitem>
+                                </deviceClass>
+                                <deviceClass name="DCT-1800 Platform Phase 2">
+                                        <configitem name="modelID" type="int">100</configitem>
+                                        <configitem name="display" type="string">ntsc</configitem>
+                                </deviceClass>
+                                <deviceClass name="DCT-700 Platform Phase 0">
+                                        <configitem name="modelID" type="int">102</configitem>
+                                        <configitem name="display" type="string">ntsc</configitem>
+                                </deviceClass>
+                                <deviceClass name="DCT-700 Platform Phase 1">
+                                        <configitem name="modelID" type="int">103</configitem>
+                                        <configitem name="display" type="string">ntsc</configitem>
+                                </deviceClass>
+                                <deviceClass name="DCT-700 Phase 3">
+                                        <configitem name="modelID" type="int">104</configitem>
+                                        <configitem name="display" type="string">ntsc</configitem>
+                                </deviceClass>
+                                <deviceClass name="DCT-1700 Platform Phase 3">
+                                        <configitem name="modelID" type="int">105</configitem>
+                                        <configitem name="display" type="string">ntsc</configitem>
+                                </deviceClass>
+                                <deviceClass name="DCH 70">
+                                        <configitem name="modelID" type="int">106</configitem>
+                                        <configitem name="display" type="string">ntsc</configitem>
+                                </deviceClass>
+                                <deviceClass name="DCT-700 Platform Phase 1.5 - 2">
+                                        <configitem name="modelID" type="int">107</configitem>
+                                        <configitem name="display" type="string">ntsc</configitem>
+                                </deviceClass>
+                                <deviceClass name="DCT-2500 Platform Phase 5">
+                                        <configitem name="modelID" type="int">108</configitem>
+                                        <configitem name="display" type="string">ntsc</configitem>
+                                </deviceClass>
+                                <deviceClass name="DCT-1800 Platform Phase 5">
+                                        <configitem name="modelID" type="int">109</configitem>
+                                        <configitem name="display" type="string">ntsc</configitem>
+                                </deviceClass>
+                                <deviceClass name="DCT-700 Reserved -1">
+                                        <configitem name="modelID" type="int">176</configitem>
+                                        <configitem name="display" type="string">ntsc</configitem>
+                                </deviceClass>
+                                <deviceClass name="DCT-700 Reserved -2">
+                                        <configitem name="modelID" type="int">177</configitem>
+                                        <configitem name="display" type="string">ntsc</configitem>
+                                </deviceClass>
+                                <deviceClass name="DCT-700 Reserved -3">
+                                        <configitem name="modelID" type="int">178</configitem>
+                                        <configitem name="display" type="string">ntsc</configitem>
+                                </deviceClass>
+                                <deviceClass name="DCT-700 Reserved -4">
+                                        <configitem name="modelID" type="int">179</configitem>
+                                        <configitem name="display" type="string">ntsc</configitem>
+                                </deviceClass>
+                                <deviceClass name="DCT-700 Reserved -5">
+                                        <configitem name="modelID" type="int">180</configitem>
+                                        <configitem name="display" type="string">ntsc</configitem>
+                                </deviceClass>
+                                <deviceClass name="DCT-700 Reserved -6">
+                                        <configitem name="modelID" type="int">181</configitem>
+                                        <configitem name="display" type="string">ntsc</configitem>
+                                </deviceClass>
+                                <deviceClass name="DCT-700 Reserved -7">
+                                        <configitem name="modelID" type="int">182</configitem>
+                                        <configitem name="display" type="string">ntsc</configitem>
+                                </deviceClass>
+                                <deviceClass name="DCT-700 Reserved -8">
+                                        <configitem name="modelID" type="int">183</configitem>
+                                        <configitem name="display" type="string">ntsc</configitem>
+                                </deviceClass>
+                                <deviceClass name="DCT-700 Reserved -9">
+                                        <configitem name="modelID" type="int">184</configitem>
+                                        <configitem name="display" type="string">ntsc</configitem>
+                                </deviceClass>
+                                <deviceClass name="DCT-700 Reserved -10">
+                                        <configitem name="modelID" type="int">185</configitem>
+                                        <configitem name="display" type="string">ntsc</configitem>
+                                </deviceClass>
+                                <deviceClass name="DCT-700 Reserved -11">
+                                        <configitem name="modelID" type="int">186</configitem>
+                                        <configitem name="display" type="string">ntsc</configitem>
+                                </deviceClass>
+                                <deviceClass name="DCT-700 Reserved -12">
+                                        <configitem name="modelID" type="int">187</configitem>
+                                        <configitem name="display" type="string">ntsc</configitem>
+                                </deviceClass>
+                                <deviceClass name="DCT-700 Reserved -13">
+                                        <configitem name="modelID" type="int">188</configitem>
+                                        <configitem name="display" type="string">ntsc</configitem>
+                                </deviceClass>
+                                <deviceClass name="DCT-700 Reserved -14">
+                                        <configitem name="modelID" type="int">189</configitem>
+                                        <configitem name="display" type="string">ntsc</configitem>
+                                </deviceClass>
+                                <deviceClass name="DCT-700 Reserved -15">
+                                        <configitem name="modelID" type="int">190</configitem>
+                                        <configitem name="display" type="string">ntsc</configitem>
+                                </deviceClass>
+                                <deviceClass name="DCT-700 Reserved -16">
+                                        <configitem name="modelID" type="int">191</configitem>
+                                        <configitem name="display" type="string">ntsc</configitem>
+                                </deviceClass>
+                                <deviceClass name="DCT-2500 Reserved -1">
+                                        <configitem name="modelID" type="int">224</configitem>
+                                        <configitem name="display" type="string">ntsc</configitem>
+                                </deviceClass>
+                                <deviceClass name="DCT-2500 Reserved -2">
+                                        <configitem name="modelID" type="int">225</configitem>
+                                        <configitem name="display" type="string">ntsc</configitem>
+                                </deviceClass>
+                                <deviceClass name="DCT-2500 Reserved -3">
+                                        <configitem name="modelID" type="int">226</configitem>
+                                        <configitem name="display" type="string">ntsc</configitem>
+                                </deviceClass>
+                                <deviceClass name="DCT-2500 Reserved -4">
+                                        <configitem name="modelID" type="int">227</configitem>
+                                        <configitem name="display" type="string">ntsc</configitem>
+                                </deviceClass>
+                                <deviceClass name="DCT-2500 Reserved -5">
+                                        <configitem name="modelID" type="int">228</configitem>
+                                        <configitem name="display" type="string">ntsc</configitem>
+                                </deviceClass>
+                                <deviceClass name="DCT-2500 Reserved -6">
+                                        <configitem name="modelID" type="int">229</configitem>
+                                        <configitem name="display" type="string">ntsc</configitem>
+                                </deviceClass>
+                                <deviceClass name="DCT-2500 Reserved -7">
+                                        <configitem name="modelID" type="int">230</configitem>
+                                        <configitem name="display" type="string">ntsc</configitem>
+                                </deviceClass>
+                                <deviceClass name="DCT-2500 Reserved -8">
+                                        <configitem name="modelID" type="int">231</configitem>
+                                        <configitem name="display" type="string">ntsc</configitem>
+                                </deviceClass>
+                                <deviceClass name="DCT-2500 Reserved -9">
+                                        <configitem name="modelID" type="int">232</configitem>
+                                        <configitem name="display" type="string">ntsc</configitem>
+                                </deviceClass>
+                                <deviceClass name="DCT-2500 Reserved -10">
+                                        <configitem name="modelID" type="int">233</configitem>
+                                        <configitem name="display" type="string">ntsc</configitem>
+                                </deviceClass>
+                                <deviceClass name="DCT-2500 Reserved -11">
+                                        <configitem name="modelID" type="int">234</configitem>
+                                        <configitem name="display" type="string">ntsc</configitem>
+                                </deviceClass>
+                                <deviceClass name="DCT-2500 Reserved -12">
+                                        <configitem name="modelID" type="int">235</configitem>
+                                        <configitem name="display" type="string">ntsc</configitem>
+                                </deviceClass>
+                                <deviceClass name="DCT-2500 Reserved -13">
+                                        <configitem name="modelID" type="int">236</configitem>
+                                        <configitem name="display" type="string">ntsc</configitem>
+                                </deviceClass>
+                                <deviceClass name="DCT-2500 Reserved -14">
+                                        <configitem name="modelID" type="int">237</configitem>
+                                        <configitem name="display" type="string">ntsc</configitem>
+                                </deviceClass>
+                                <deviceClass name="DCT-2500 Reserved -15">
+                                        <configitem name="modelID" type="int">238</configitem>
+                                        <configitem name="display" type="string">ntsc</configitem>
+                                </deviceClass>
+                                <deviceClass name="DCT-2500 Reserved -16">
+                                        <configitem name="modelID" type="int">239</configitem>
+                                        <configitem name="display" type="string">ntsc</configitem>
+                                </deviceClass>
+                                <deviceClass name="DCT-6200 Platform - Phases 0, 0.5, 1">
+                                        <configitem name="modelID" type="int">262</configitem>
+                                </deviceClass>
+                                <deviceClass name="DCT-5100 Platform">
+                                        <configitem name="modelID" type="int">599</configitem>
+                                </deviceClass>
+                                <deviceClass name="DCT-5100 Platform with DVI">
+                                        <configitem name="modelID" type="int">601</configitem>
+                                </deviceClass>
+                                <deviceClass name="DCT-6200 Platform - Phases 0, 0.5, 1">
+                                        <configitem name="modelID" type="int">602</configitem>
+                                </deviceClass>
+                                <deviceClass name="DCT-6208 Platform - Phases 0, 0.5, 1">
+                                        <configitem name="modelID" type="int">605</configitem>
+                                </deviceClass>
+                                <deviceClass name="DCT-6412/6416 Platform - Phase 1">
+                                        <configitem name="modelID" type="int">606</configitem>
+                                </deviceClass>
+                                <deviceClass name="DCT-6412 Platform - Phase 2">
+                                        <configitem name="modelID" type="int">607</configitem>
+                                </deviceClass>
+                                <deviceClass name="DCT-6200 Platform - Phase 2">
+                                        <configitem name="modelID" type="int">610</configitem>
+                                </deviceClass>
+                                <deviceClass name="DCH 3200">
+                                        <configitem name="modelID" type="int">610</configitem>
+                                </deviceClass>
+                                <deviceClass name="DCH 6200">
+                                        <configitem name="modelID" type="int">610</configitem>
+                                </deviceClass>
+                                <deviceClass name="DCT-6208 Platform - Phase 2">
+                                        <configitem name="modelID" type="int">611</configitem>
+                                </deviceClass>
+                                <deviceClass name="DCT-6412/6416 Platform - Phase 3">
+                                        <configitem name="modelID" type="int">612</configitem>
+                                </deviceClass>
+                                <deviceClass name="DCH 6416">
+                                        <configitem name="modelID" type="int">612</configitem>
+                                </deviceClass>
+                                <deviceClass name="DCT-6412/6416 Platform - Phase 2.3">
+                                        <configitem name="modelID" type="int">613</configitem>
+                                </deviceClass>
+                                <deviceClass name="DCT-6412/6416 Platform - Phase 3.2">
+                                        <configitem name="modelID" type="int">614</configitem>
+                                </deviceClass>
+                                <deviceClass name="DCT-6412/6416 Platform - Reserved 2">
+                                        <configitem name="modelID" type="int">615</configitem>
+                                </deviceClass>
+                                <deviceClass name="DCT-6412/6416 Platform - Reserved 3">
+                                        <configitem name="modelID" type="int">616</configitem>
+                                </deviceClass>
+                                <deviceClass name="DCT-6412/6416 Platform - Reserved 4">
+                                        <configitem name="modelID" type="int">617</configitem>
+                                </deviceClass>
+                                <deviceClass name="DCT-6412/6416 Platform - Reserved 5">
+                                        <configitem name="modelID" type="int">618</configitem>
+                                </deviceClass>
+                                <deviceClass name="DCT-6412/6416 Platform - Reserved 6">
+                                        <configitem name="modelID" type="int">619</configitem>
+                                </deviceClass>
+                                <deviceClass name="DCT-6412/6416 Platform - Reserved 8">
+                                        <configitem name="modelID" type="int">620</configitem>
+                                </deviceClass>
+                                <deviceClass name="DCT-3412/3416 Platform">
+                                        <configitem name="modelID" type="int">704</configitem>
+                                </deviceClass>
+                                <deviceClass name="DCH 3416">
+                                        <configitem name="modelID" type="int">704</configitem>
+                                </deviceClass>
+                                <deviceClass name="DCT-3412/3416 Platform - Reserved 1">
+                                        <configitem name="modelID" type="int">705</configitem>
+                                </deviceClass>
+                                <deviceClass name="DCT-3412/3416 Platform - Reserved 2">
+                                        <configitem name="modelID" type="int">706</configitem>
+                                </deviceClass>
+                                <deviceClass name="DCT-3412/3416 Platform - Reserved 3">
+                                        <configitem name="modelID" type="int">707</configitem>
+                                </deviceClass>
+                                <deviceClass name="DCT-3412/3416 Platform - Reserved 4">
+                                        <configitem name="modelID" type="int">708</configitem>
+                                </deviceClass>
+                                <deviceClass name="DCT-3412/3416 Platform - Reserved 5">
+                                        <configitem name="modelID" type="int">709</configitem>
+                                </deviceClass>
+                                <deviceClass name="DCT-3412/3416 Platform - Reserved 6">
+                                        <configitem name="modelID" type="int">710</configitem>
+                                </deviceClass>
+                                <deviceClass name="DCT-3412/3416 Platform - Reserved 7">
+                                        <configitem name="modelID" type="int">711</configitem>
+                                </deviceClass>
+                                <deviceClass name="DCT-3412/3416 Platform - Reserved 8">
+                                        <configitem name="modelID" type="int">712</configitem>
+                                </deviceClass>
+                                <deviceClass name="DCT-6200 Platform - Reserved 1">
+                                        <configitem name="modelID" type="int">713</configitem>
+                                </deviceClass>
+                                <deviceClass name="DCT-6200 Platform - Reserved 2">
+                                        <configitem name="modelID" type="int">714</configitem>
+                                </deviceClass>
+                                <deviceClass name="DCT-6200 Platform - Reserved 3">
+                                        <configitem name="modelID" type="int">715</configitem>
+                                </deviceClass>
+                                <deviceClass name="DCT-6200 Platform - Reserved 4">
+                                        <configitem name="modelID" type="int">716</configitem>
+                                </deviceClass>
+                                <deviceClass name="DCT-6200 Platform - Reserved 5">
+                                        <configitem name="modelID" type="int">717</configitem>
+                                </deviceClass>
+                                <deviceClass name="DCT-6200 Platform - Reserved 6">
+                                        <configitem name="modelID" type="int">718</configitem>
+                                </deviceClass>
+                                <deviceClass name="DCT-6200 Platform - Reserved 7">
+                                        <configitem name="modelID" type="int">719</configitem>
+                                </deviceClass>
+                                <deviceClass name="DCH 100  Phase 1">
+                                        <configitem name="modelID" type="int">738</configitem>
+                                        <configitem name="display" type="string">ntsc</configitem>
+                                </deviceClass>
+                                <deviceClass name="DCH 200  Phase 1">
+                                        <configitem name="modelID" type="int">748</configitem>
+                                        <configitem name="display" type="string">ntsc</configitem>
+                                </deviceClass>
+                                <deviceClass name="DCH 70  Phase 1">
+                                        <configitem name="modelID" type="int">758</configitem>
+                                        <configitem name="display" type="string">ntsc</configitem>
+                                </deviceClass>
+                                <deviceClass name="DCH 70  Phase 1.5">
+                                        <configitem name="modelID" type="int">759</configitem>
+                                        <configitem name="display" type="string">ntsc</configitem>
+                                </deviceClass>
+                                <deviceClass name="DCH 70  Phase 2">
+                                        <configitem name="modelID" type="int">760</configitem>
+                                        <configitem name="display" type="string">ntsc</configitem>
+                                </deviceClass>
+                                <deviceClass name="Pace TDC575D Vegas">
+                                        <configitem name="modelID" type="int">1283</configitem>
+                                        <configitem name="display" type="string">ntsc</configitem>
+                                </deviceClass>
+                                <deviceClass name="Pace TDC577X Vegas Host">
+                                        <configitem name="modelID" type="int">1288</configitem>
+                                        <configitem name="display" type="string">ntsc</configitem>
+                                </deviceClass>
+                                <deviceClass name="Pace 110">
+                                        <configitem name="modelID" type="int">1301</configitem>
+                                </deviceClass>
+                                <deviceClass name="DCX 100-M (MoCA enabled)">
+                                        <configitem name="modelID" type="int">2048</configitem>
+                                        <configitem name="display" type="string">ntsc</configitem>
+                                </deviceClass>
+                                <deviceClass name="DCX 100">
+                                        <configitem name="modelID" type="int">2049</configitem>
+                                        <configitem name="display" type="string">ntsc</configitem>
+                                </deviceClass>
+                                <deviceClass name="DCX 3200-M (MoCA enabled)">
+                                        <configitem name="modelID" type="int">2050</configitem>
+                                </deviceClass>
+                                <deviceClass name="DCX 3200">
+                                        <configitem name="modelID" type="int">2051</configitem>
+                                </deviceClass>
+                                <deviceClass name="DCX 3400-M (MoCA enabled)">
+                                        <configitem name="modelID" type="int">2052</configitem>
+                                </deviceClass>
+                                <deviceClass name="DCX 3400 (Non-MoCA)">
+                                        <configitem name="modelID" type="int">2053</configitem>
+                                </deviceClass>
+                                <deviceClass name="DCX 3500-M/DCX-3501-M Host">
+                                        <configitem name="modelID" type="int">2066</configitem>
+                                </deviceClass>
+                                <deviceClass name="DCX 3500/DCX-3501 Host">
+                                        <configitem name="modelID" type="int">2067</configitem>
+                                </deviceClass>
+                                <!--  End of list of Moto STB models that are in the TVWorks document -->
+
+                                <!--  The following device model ID is used by HD Moto STB clients to launch SD sessions-->
+                                <deviceClass name="Moto HD-to-SD resolution switch fake device">
+                                        <configitem name="modelID" type="int">2999</configitem>
+                                        <configitem name="display" type="string">ntsc</configitem>
+                                </deviceClass>
+                        </deviceClass>
+                        <!-- Generic Scientific Atlanta box base class (group 3) -->
+                        <deviceClass name="GenericScientificAtlanta">
+                                <configitem name="keyMap" type="string">SAStandard</configitem>
+                                <configitem name="vendor" type="string">Scientific Atlanta</configitem>
+                                <configitem name="deviceGroup" type="int">3</configitem>
+                                <configitem name="manufacturerID" type="int">1</configitem>
+                                <configitem name="generateKeyUps" type="bool">false</configitem>
+                                <!-- TODO: Optimize this to a lower value -->
+                                <configitem name="initialIFrames" type="int">100</configitem>
+                                <!-- This is the default modelId used for requests that specify a model id not available -->
+                                <deviceClass name="DEFAULT-SA">
+                                        <configitem name="modelID" type="int">0</configitem>
+                                </deviceClass>
+                                <!-- SA PTV OS3 or earlier -->
+                                <deviceClass name="SA-PTV-OS3">
+                                        <configitem name="modelID" type="int">1</configitem>
+                                </deviceClass>
+                                <deviceClass name="SA-1850">
+                                        <configitem name="modelID" type="int">2</configitem>
+                                        <configitem name="display" type="string">ntsc</configitem>
+                                </deviceClass>
+                                <deviceClass name="SA-4200">
+                                        <configitem name="modelID" type="int">8</configitem>
+                                </deviceClass>
+                                <deviceClass name="SA-4250C">
+                                        <configitem name="modelID" type="int">8</configitem>
+                                </deviceClass>
+                                <deviceClass name="SA-3250">
+                                        <configitem name="modelID" type="int">8</configitem>
+                                </deviceClass>
+                                <deviceClass name="SA-SD">
+                                        <configitem name="modelID" type="int">9</configitem>
+                                        <configitem name="display" type="string">ntsc</configitem>
+                                </deviceClass>
+                                <deviceClass name="SA-8010">
+                                        <configitem name="modelID" type="int">10</configitem>
+                                </deviceClass>
+                                <deviceClass name="SA-8300">
+                                        <configitem name="modelID" type="int">11</configitem>
+                                </deviceClass>
+                                <deviceClass name="SA-8300HD">
+                                        <configitem name="modelID" type="int">11</configitem>
+                                </deviceClass>
+                                <deviceClass name="SA-HD">
+                                        <configitem name="modelID" type="int">15</configitem>
+                                </deviceClass>
+                                <deviceClass name="SA-FAKEHD">
+                                        <configitem name="modelID" type="int">12</configitem>
+                                </deviceClass>
+                        </deviceClass>
+                </deviceClass>
+                <!-- Cable Transport -->
+                <!--
+    +++++++++++++++++++++++++++++++++++++++++++++++++++
+        IPTV transport (MPEG over UDP)
+    +++++++++++++++++++++++++++++++++++++++++++++++++++
+    -->
+                <deviceClass name="IPTVTransport">
+                        <configitem name="transport" type="string">udp</configitem>
+                        <!-- Streaming Profile -->
+                        <configitem name="bitrateMode" type="string">vbr</configitem>
+                        <configitem name="initialIFrames" type="int">20</configitem>
+                        <configitem name="intraMbRefreshRate" type="int">100000</configitem>
+                        <configitem name="intraMbRefreshTimeout" type="int">30</configitem>
+                        <!-- Packet pacing options -->
+                        <configitem name="RMax" type="int">80</configitem>
+                        <configitem name="PMax" type="int">8</configitem>
+                        <deviceClass name="StandardIPTVClient">
+            </deviceClass>
+
+            <!--
+                +++++++++++++++++++++++++++++++++++++++++++++++++++
+                    RTSP Clients - start
+                +++++++++++++++++++++++++++++++++++++++++++++++++++
+            -->
+            <deviceClass name="StandardRTSPClient">
+                <configitem name="videoCodec" type="string">mpeg2</configitem>
+                <configitem name="audioCodec" type="string">mp2</configitem>
+                <configitem name="RMax" type="int">20</configitem>
+                <!-- whether or not to return an SDP description in response to the SETUP request -->
+                <configitem name="useSdpInSetup" type="bool">false</configitem>
+                <!--
+                    whether or not to use RFC2326 compliant session ID. The RTSP RFC specifies that a SessionId
+                    has the following format:
+                        session-id = 1* ( ALPHA | DIGIT | safe )
+                    If not set, the returned sessionId is that of the USM (which is not compliant as it contains
+                    dashes) which simplifies session tracking in the cloudtv.log.
+                -->
+                <configitem name="useRfc2326CompliantSessionID" type="bool">false</configitem>
+                <!--
+                    keep-alive timer for the RTSP clients. If they do not issue a GET_PARAMATER or ANNOUNCE
+                    within the specified timeout, the server will terminate the session
+                -->
+                <configitem name="sessionTimeout" type="int">30</configitem>
+
+                <!-- Amino A140 specific -->
+                <deviceClass name="AminoA140">
+                                    <configitem name="clientIDPattern" type="string">^ax4x_amino.*</configitem>
+                    <configitem name="display" type="string">hd720</configitem>
+                </deviceClass>
+                <!-- Amino A130 specific -->
+                <deviceClass name="AminoA130">
+                                    <configitem name="clientIDPattern" type="string">^a130_amino.*</configitem>
+                    <configitem name="display" type="string">hd720</configitem>
+                </deviceClass>
+                <!-- Amino A110 specific -->
+                <deviceClass name="AminoA110">
+                                    <configitem name="clientIDPattern" type="string">^a110_amino.*</configitem>
+                    <configitem name="display" type="string">pal16x9</configitem>
+                    <configitem name="audioDropInterval" type="int">50</configitem>
+                                <configitem name="initialIFrames" type="int">20</configitem>
+                    <configitem name="bitrate" type="int">20500000</configitem>
+                    <!-- Amino 110 requires compliant RTSP SessionId's -->
+                    <configitem name="useRfc2326CompliantSessionID" type="bool">true</configitem>
+                </deviceClass>
+            </deviceClass>
+            <!--
+                +++++++++++++++++++++++++++++++++++++++++++++++++++
+                    RTSP Clients - end
+                +++++++++++++++++++++++++++++++++++++++++++++++++++
+            -->
+                </deviceClass>
+                <!-- IPTV Transport -->
+                <!--
+    +++++++++++++++++++++++++++++++++++++++++++++++++++
+        Over-the-top (OTT) delivery, typically used in
+        Broadband Connected Device (BCD)
+    +++++++++++++++++++++++++++++++++++++++++++++++++++
+    -->
+                <deviceClass name="BCDTransport">
+                        <configitem name="transport" type="string">http</configitem>
+                        <configitem name="videoCodec" type="string">h264</configitem>
+                        <configitem name="audioCodec" type="string">ac3</configitem>
+                        <configitem name="multi" type="string">1.0,0.8,0.4</configitem>
+                        <!-- Adaptive Bitrate settings -->
+                        <configitem name="bitrateUp" type="string">1.0</configitem>
+                        <configitem name="bitrateDown" type="string">1.0</configitem>
+                        <configitem name="maxClientLatency" type="int">5000</configitem>
+                        <deviceClass name="funai">
+                                <!-- Bluray specific stream settings -->
+                <configitem name="display" type="string">720p29.97</configitem>
+                <configitem name="TSProgramPID" type="int">256</configitem>
+                <configitem name="TSPcrPID" type="int">4097</configitem>
+                <configitem name="TSVideoPID" type="int">4113</configitem>
+                <configitem name="TSAudioPID" type="int">4352</configitem>
+                <configitem name="TSPmtProgramInfo" type="string">05 04 48 44 4d 56 88 04 0f ff fc fc</configitem>
+                <configitem name="TSPmtVideoInfo" type="string">05 08 48 44 4d 56 ff 1b 43 3f</configitem>
+                <configitem name="TSTablePid" type="int">31</configitem>
+                <configitem name="TSTableProgram" type="int">0</configitem>
+                <configitem name="TSTableBytes" type="string">7f f0 19 ff ff c1 00 00 f0 0a 63 08 c0 af c8 ff ff ff ff ff 00 01 80 00</configitem>
+                <configitem name="videoDropInterval" type="int">4</configitem>
+                <configitem name="audioDropInterval" type="int">4</configitem>
+                                <configitem name="streamSwitchOnDisplayChange" type="bool">true</configitem>
+                                <deviceClass name="funai_bdp">
+                                        <configitem name="clientIDPattern" type="string">^funai_bdp.*</configitem>
+                                </deviceClass>
+                                <deviceClass name="funai_bdp_5506">
+                                        <configitem name="clientIDPattern" type="string">^PHILIPS_E5WA0UD.*</configitem>
+                                </deviceClass>
+                                      <deviceClass name="StandardLGM13Client">
+                                        <configitem name="clientIDPattern" type="string">^lg_mtk5398.*</configitem>
+                                        <configitem name="initialIFrames" type="int">1</configitem>
+                                        <configitem name="videoCodec" type="string">h264</configitem>
+                                        <configitem name="audioCodec" type="string">aac</configitem>
+                                </deviceClass>
+
+                    <deviceClass name="funai_tv1">
+                    <configitem name="clientIDPattern" type="string">^PHILIPS_A1PFL95.*</configitem>
+                    </deviceClass>
+                    <deviceClass name="funai_tv2">
+                    <configitem name="clientIDPattern" type="string">^PHILIPS_A2PFLA0.*</configitem>
+                    </deviceClass>
+                    <deviceClass name="funai_tv3">
+                    <configitem name="clientIDPattern" type="string">^PHILIPS_A3PFLA5.*</configitem>
+                    </deviceClass>
+                        </deviceClass>
+                    <deviceClass name="RokuDevice">
+                <configitem name="videoCodec" type="string">h264</configitem>
+                <configitem name="audioCodec" type="string">aac</configitem>
+                <configitem name="videoDropInterval" type="int">4</configitem>
+                <configitem name="audioDropInterval" type="int">4</configitem>
+                <deviceClass name="Roku2XS">
+                    <configitem name="clientIDPattern" type="string">^Roku-3100X_.*</configitem>
+                </deviceClass>
+                <deviceClass name="Roku3">
+                    <configitem name="clientIDPattern" type="string">^Roku-4200X_.*</configitem>
+                </deviceClass>
+            </deviceClass>
+                </deviceClass>
+                <!-- BCD Transport -->
+                <!-- device class for development clients, which receive logging information from the platform -->
+                <deviceClass name="StandardDevelopmentClient">
+                        <configitem name="transport" type="string">http</configitem>
+                        <configitem name="videoCodec" type="string">h264</configitem>
+                        <configitem name="audioCodec" type="string">ac3</configitem>
+                        <configitem name="initialIFrames" type="int">1</configitem>
+                        <!--  enable logging in Transport Stream -->
+                        <configitem name="TSLogPID" type="int">68</configitem>
+                        <!-- Save the output stream to file. The following, optional, patterns can be used:
+           %S: replaced with session id
+           %D: replaced with current date + time in the following format: DD_MM_YY_HH_MM_SS
+           Example:
+         <configitem name="sessionDebug" type="string">%S_debug_%D.ts</configitem>
+      -->
+                        <deviceClass name="StandardDevelopmentHTTPClient">
+                                <configitem name="clientIDPattern" type="string">^avplay.*</configitem>
+                        </deviceClass>
+                        <deviceClass name="MPEG2DevelopmentHTTPClient">
+                                <configitem name="clientIDPattern" type="string">^mpeg2avplay.*</configitem>
+                                <configitem name="videoCodec" type="string">mpeg2</configitem>
+                                <configitem name="audioCodec" type="string">mp2</configitem>
+                        </deviceClass>
+                        <deviceClass name="StandardDevelopmentUDPClient">
+                                <configitem name="transport" type="string">udp</configitem>
+                        </deviceClass>
+                        <deviceClass name="StandardDevelopmentCableClient">
+                                <configitem name="transport" type="string">udp</configitem>
+                                <configitem name="allocateResources" type="string">true</configitem>
+                        </deviceClass>
+                        <deviceClass name="StandardRFBTVClient">
+                                <configitem name="transport" type="string">http</configitem>
+                                <configitem name="allocateResources" type="string">false</configitem>
+                                <configitem name="clientIDPattern" type="string">^rfbtv.*</configitem>
+                                <!-- Default value: 30000 ms, use "0" to disable
+                                <configitem name="heartbeatInterval" type="int">30000</configitem>
+                                -->
+                        </deviceClass>
+                </deviceClass>
+                <!-- Development Clients -->
+        </deviceClasses>
+        <userInputConfiguration>
+                <!-- Mappings of virtual key codes to application engine specific RCC codes.
+        This is currently only necessary for supporting TAG's RCC codes.
+        -->
+                <vkcodeToRccMaps>
+                        <vkcodeToRccMap id="TAG">
+                                <rccDefs>
+                                        <!-- vkcode = The virtual key code to map to one app engine RCC code.
+                         rcc = The app engine specific RCC code in text form, for display purposes
+                         value = The numeric value of the app engine specific RCC code (sent to the app engine)
+                    -->
+                                        <!-- Used if no key code recieved -->
+                                        <rcc vkcode="0" rcc="RCC_NONE" value="0x0000"/>
+                                        <!--  Acceptable input remote control key codes for games, RCCG_SELECTION  -->
+                                        <rcc vkcode="VK_ENTER" rcc="RCC_SELECT" value="0x0001"/>
+                                        <!-- Acceptable input remote control key codes for games, RCCG_DIRECTION -->
+                                        <rcc vkcode="VK_UP" rcc="RCC_UP" value="0x0002"/>
+                                        <rcc vkcode="VK_DOWN" rcc="RCC_DOWN" value="0x0003"/>
+                                        <rcc vkcode="VK_LEFT" rcc="RCC_LEFT" value="0x0004"/>
+                                        <rcc vkcode="VK_RIGHT" rcc="RCC_RIGHT" value="0x0005"/>
+                                        <!-- RCCG_NUMERIC -->
+                                        <rcc vkcode="VK_1" rcc="RCC_1" value="0x0006"/>
+                                        <rcc vkcode="VK_2" rcc="RCC_2" value="0x0007"/>
+                                        <rcc vkcode="VK_3" rcc="RCC_3" value="0x0008"/>
+                                        <rcc vkcode="VK_4" rcc="RCC_4" value="0x0009"/>
+                                        <rcc vkcode="VK_5" rcc="RCC_5" value="0x000A"/>
+                                        <rcc vkcode="VK_6" rcc="RCC_6" value="0x000B"/>
+                                        <rcc vkcode="VK_7" rcc="RCC_7" value="0x000C"/>
+                                        <rcc vkcode="VK_8" rcc="RCC_8" value="0x000D"/>
+                                        <rcc vkcode="VK_9" rcc="RCC_9" value="0x000E"/>
+                                        <rcc vkcode="VK_0" rcc="RCC_0" value="0x000F"/>
+                                        <rcc vkcode="VK_BACK_SPACE" rcc="RCC_0" value="0x000F"/>
+                                        <!-- RCCG_AUDIO -->
+                                        <rcc vkcode="VK_OEMA" rcc="RCC_A" value="0x0010"/>
+                                        <rcc vkcode="VK_OEMB" rcc="RCC_B" value="0x0011"/>
+                                        <rcc vkcode="VK_OEMC" rcc="RCC_C" value="0x0012"/>
+                                        <!-- audio control keys RCCG_AUDIO -->
+                                        <rcc vkcode="VK_MUTE" rcc="RCC_MUTE" value="0x0013"/>
+                                        <rcc vkcode="VK_VOL_UP" rcc="RCC_VOLUMEUP" value="0x0014"/>
+                                        <rcc vkcode="VK_VOL_DOWN" rcc="RCC_VOLUMEDOWN" value="0x0015"/>
+                                        <!-- To be used at some point in the future for video playback RCCG_PLAYBACK -->
+                                        <rcc vkcode="VK_PLAY" rcc="RCC_PLAY" value="0x0016"/>
+                                        <rcc vkcode="VK_STOP" rcc="RCC_STOP" value="0x0017"/>
+                                        <rcc vkcode="VK_FAST_FWD" rcc="RCC_FORWARD" value="0x0018"/>
+                                        <rcc vkcode="VK_REWIND" rcc="RCC_REWIND" value="0x0019"/>
+                                        <rcc vkcode="VK_PAUSE" rcc="RCC_PAUSE" value="0x001A"/>
+                                        <rcc vkcode="VK_RECORD" rcc="RCC_RECORD" value="0x001B"/>
+                                        <!-- Extra keys with no game function RCCG_NAVIGATION -->
+                                        <rcc vkcode="VK_SETTINGS" rcc="RCC_SETTINGS" value="0x001C"/>
+                                        <rcc vkcode="VK_PAGE_UP" rcc="RCC_PAGEUP" value="0x001D"/>
+                                        <rcc vkcode="VK_PAGE_DOWN" rcc="RCC_PAGEDOWN" value="0x001E"/>
+                                        <rcc vkcode="VK_FAVORITES" rcc="RCC_FAVORITE" value="0x001F"/>
+                                        <rcc vkcode="VK_GUIDE" rcc="RCC_GUIDE" value="0x0020"/>
+                                        <rcc vkcode="VK_MENU" rcc="RCC_MENU" value="0x0021"/>
+                                        <rcc vkcode="VK_INFO" rcc="RCC_INFO" value="0x0022"/>
+                                        <rcc vkcode="VK_EXIT" rcc="RCC_EXIT" value="0x0023"/>
+                                        <rcc vkcode="VK_HELP" rcc="RCC_HELP" value="0x0025"/>
+                                        <rcc vkcode="4135" rcc="RCC_BYPASS" value="0x0026"/>
+                                        <!-- some other keys not included above -->
+                                        <rcc vkcode="4200" rcc="RCC_OTHER" value="0x0027"/>
+                                        <rcc vkcode="4101" rcc="RCC_KEEPALIVE" value="0x0028"/>
+                                </rccDefs>
+                        </vkcodeToRccMap>
+                </vkcodeToRccMaps>
+                <!-- The device type specific key maps. These will be converted to IUserInputTranslator objects.
+       Client interface plug-ins gain access to the translators via the client properties manager's
+       method getUserInputTranslator(), providing the name of the key map which is gained from the
+       tag list containing the client's properties, which is acquired using
+       IClientPropertiesManager.getClientProperties().
+    -->
+                <keymaps>
+                        <!-- This is a standard SA key map (given that all SA boxes have the same map - if not
+                        then all specific maps must be defined here and assigned to the corresponding device class
+                        in the class definitions below.
+
+                        This is an example for a type="numeric" key map, for which numeric values are assigned to virtual key codes -->
+                        <keymap id="SAStandard" type="numeric">
+                                <!--  Acceptable input remote control key codes for games, RCCG_SELECTION  -->
+                                <key code="0x85" vkcode="VK_ENTER"/>
+                                <!--  Acceptable input remote control key codes for games, RCCG_SELECTION  -->
+                                <key code="0x83" vkcode="VK_LEFT"/>
+                                <key code="0x81" vkcode="VK_UP"/>
+                                <key code="0x84" vkcode="VK_RIGHT"/>
+                                <key code="0x82" vkcode="VK_DOWN"/>
+                                <!-- RCCG_NUMERIC -->
+                                <key code="0x30" vkcode="VK_0"/>
+                                <key code="0x31" vkcode="VK_1"/>
+                                <key code="0x32" vkcode="VK_2"/>
+                                <key code="0x33" vkcode="VK_3"/>
+                                <key code="0x34" vkcode="VK_4"/>
+                                <key code="0x35" vkcode="VK_5"/>
+                                <key code="0x36" vkcode="VK_6"/>
+                                <key code="0x37" vkcode="VK_7"/>
+                                <key code="0x38" vkcode="VK_8"/>
+                                <key code="0x39" vkcode="VK_9"/>
+                                <!-- RCCG_ALPHA -->
+                                <key code="0x92" vkcode="VK_OEMA"/>
+                                <key code="0x93" vkcode="VK_OEMB"/>
+                                <key code="0x94" vkcode="VK_OEMC"/>
+                                <!-- audio control keys RCCG_AUDIO -->
+                                <key code="0x8C" vkcode="VK_MUTE"/>
+                                <key code="0x8A" vkcode="VK_VOL_UP"/>
+                                <key code="0x8B" vkcode="VK_VOL_DOWN"/>
+                                <!-- To be used at some point in the future for video playback RCCG_PLAYBACK -->
+                                <key code="0x99" vkcode="VK_PLAY"/>
+                                <key code="0x9A" vkcode="VK_STOP"/>
+                                <key code="0x98" vkcode="VK_FAST_FWD"/>
+                                <key code="0x97" vkcode="VK_REWIND"/>
+                                <key code="0x9B" vkcode="VK_PAUSE"/>
+                                <key code="0x9C" vkcode="VK_RECORD"/>
+                                <!-- Extra keys with no game function RCCG_NAVIGATION -->
+                                <key code="0x8F" vkcode="VK_SETTINGS"/>
+                                <key code="0x90" vkcode="VK_PAGE_UP"/>
+                                <key code="0x91" vkcode="VK_PAGE_DOWN"/>
+                                <key code="0x96" vkcode="VK_FAVORITES"/>
+                                <key code="0x8D" vkcode="VK_GUIDE"/>
+                                <key code="0xC0" vkcode="VK_MENU"/>
+                                <key code="0x8E" vkcode="VK_GUIDE"/>
+                                <key code="0x87" vkcode="VK_EXIT"/>
+                                <key code="0x95" vkcode="VK_BACK_SPACE"/>
+                                <key code="0xB1" vkcode="VK_HELP"/>
+                        </keymap>
+                        <!-- Standard Motorola key map (given that all Motorola boxes have the same map - if not
+                        then all specific maps must be defined here and assigned to the corresponding device class
+                        in the class definitions below. -->
+                        <keymap id="MotorolaStandard" type="numeric">
+                                <!--  Acceptable input remote control key codes for games, RCCG_SELECTION  -->
+                                <key code="0x11" vkcode="VK_ENTER"/>
+                                <!--  Acceptable input remote control key codes for games, RCCG_SELECTION  -->
+                                <key code="0x36" vkcode="VK_LEFT"/>
+                                <key code="0x34" vkcode="VK_UP"/>
+                                <key code="0x37" vkcode="VK_RIGHT"/>
+                                <key code="0x35" vkcode="VK_DOWN"/>
+                                <!-- RCCG_NUMERIC -->
+                                <key code="0x0" vkcode="VK_0"/>
+                                <key code="0x1" vkcode="VK_1"/>
+                                <key code="0x2" vkcode="VK_2"/>
+                                <key code="0x3" vkcode="VK_3"/>
+                                <key code="0x4" vkcode="VK_4"/>
+                                <key code="0x5" vkcode="VK_5"/>
+                                <key code="0x6" vkcode="VK_6"/>
+                                <key code="0x7" vkcode="VK_7"/>
+                                <key code="0x8" vkcode="VK_8"/>
+                                <key code="0x9" vkcode="VK_9"/>
+                                <!-- RCCG_ALPHA -->
+                                <!-- Moto "Fat" remote -->
+                                <key code="0x17" vkcode="VK_OEMA"/>
+                                <key code="0x27" vkcode="VK_OEMB"/>
+                                <key code="0x28" vkcode="VK_OEMC"/>
+                                <key code="0x29" vkcode="VK_OEMD"/>
+                                <!-- Moto "newer" remotes -->
+                                <key code="0x16" vkcode="VK_OEMA"/>
+                                <key code="0x39" vkcode="VK_OEMB"/>
+                                <key code="0x38" vkcode="VK_OEMC"/>
+                                <!-- audio control keys RCCG_AUDIO -->
+                                <key code="0x0F" vkcode="VK_MUTE"/>
+                                <key code="0x0D" vkcode="VK_VOL_UP"/>
+                                <key code="0x0E" vkcode="VK_VOL_DOWN"/>
+                                <!-- To be used at some point in the future for video playback RCCG_PLAYBACK -->
+                                <key code="0x1B" vkcode="VK_PLAY"/>
+                                <key code="0x1C" vkcode="VK_STOP"/>
+                                <key code="0x1D" vkcode="VK_FAST_FWD"/>
+                                <key code="0x1E" vkcode="VK_REWIND"/>
+                                <key code="0x1F" vkcode="VK_PAUSE"/>
+                                <key code="0x31" vkcode="VK_RECORD"/>
+                                <!-- Extra keys with no game function RCCG_NAVIGATION -->
+                                <key code="0x3A" vkcode="VK_PAGE_UP"/>
+                                <key code="0x3B" vkcode="VK_PAGE_DOWN"/>
+                                <key code="0x15" vkcode="VK_FAVORITES"/>
+                                <key code="0x30" vkcode="VK_GUIDE"/>
+                                <key code="0x19" vkcode="VK_MENU"/>
+                                <key code="0x33" vkcode="VK_INFO"/>
+                                <key code="0x12" vkcode="VK_EXIT"/>
+                                <key code="0x13" vkcode="VK_BACK_SPACE"/>
+                                <key code="0x32" vkcode="VK_HELP"/>
+                                <key code="0x1A" vkcode="VK_ONDEMAND"/>
+                        </keymap>
+                        <!-- Example for iPad key map - TODO: gesture translation -->
+                        <keymap id="ipad" type="string">
+                                <!-- TBD -->
+                        </keymap>
+                </keymaps>
+        </userInputConfiguration>
+</devices>
