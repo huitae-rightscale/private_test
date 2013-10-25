@@ -14,7 +14,8 @@ supports "redhat"
 supports "ubuntu"
 
 depends "rightscale"
-depends "app"
+#depends "app"
+depends "avn"
 depends "lb"
 
 recipe "lb_haproxy::setup_server",
