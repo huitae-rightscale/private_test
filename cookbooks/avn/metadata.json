@@ -1,85 +1,114 @@
 {
-  "conflicting": {
+  "groupings": {
+  },
+  "license": "",
+  "recipes": {
+    "avn::default": "default recipe"
   },
   "version": "0.1.1",
   "platforms": {
   },
-  "maintainer_email": "",
-  "maintainer": "",
-  "recipes": {
-    "avn::default": "default recipe"
-  },
   "recommendations": {
-  },
-  "name": "avn",
-  "replacing": {
-  },
-  "description": "Install & configure avn application",
-  "attributes": {
-    "avn/cluster_master_ip": {
-      "display_name": "transcoder_cluster",
-      "type": "string",
-      "required": "optional",
-      "recipes": [
-        "avn::default"
-      ],
-      "description": "IP or FQDN of transcoder master",
-      "choice": [
-
-      ],
-      "calculated": false
-    },
-    "avn/transcoder_master": {
-      "display_name": "cluster_master",
-      "type": "string",
-      "required": "optional",
-      "recipes": [
-        "avn::default"
-      ],
-      "description": "Select master of transcoder master",
-      "choice": [
-        "master",
-        "slave"
-      ],
-      "calculated": false
-    },
-    "avn/transcoder_ip": {
-      "display_name": "transcoder_ip",
-      "type": "string",
-      "required": "optional",
-      "recipes": [
-        "avn::default"
-      ],
-      "description": "IP of transcoder server",
-      "choice": [
-
-      ],
-      "calculated": false
-    },
-    "avn/tier": {
-      "display_name": "tier",
-      "type": "string",
-      "required": "required",
-      "recipes": [
-        "avn::default"
-      ],
-      "description": "Server Role",
-      "choice": [
-        "cloudtv",
-        "transcoder"
-      ],
-      "calculated": false
-    }
-  },
-  "providing": {
   },
   "dependencies": {
     "rightscale": ">= 0.0.0"
   },
-  "license": "",
+  "maintainer_email": "",
+  "description": "Install & configure avn application",
+  "name": "avn",
+  "replacing": {
+  },
+  "conflicting": {
+  },
+  "attributes": {
+    "avn/backend_ip_type": {
+      "calculated": false,
+      "default": "private",
+      "recipes": [
+        "avn::default"
+      ],
+      "required": "optional",
+      "display_name": "Application IP Type Given to Load Balancer",
+      "choice": [
+        "public",
+        "private"
+      ],
+      "description": "Specify the IP type where the application server is listening. Example: private",
+      "type": "string"
+    },
+    "avn/cluster_master_ip": {
+      "calculated": false,
+      "recipes": [
+        "avn::default"
+      ],
+      "required": "optional",
+      "display_name": "transcoder_cluster",
+      "choice": [
+
+      ],
+      "description": "IP or FQDN of transcoder master",
+      "type": "string"
+    },
+    "avn/port": {
+      "calculated": false,
+      "default": "80",
+      "recipes": [
+        "avn::default"
+      ],
+      "required": "optional",
+      "display_name": "Application Listen Port",
+      "choice": [
+
+      ],
+      "description": "The port that the application service is listening on. Example: 80",
+      "type": "string"
+    },
+    "avn/transcoder_master": {
+      "calculated": false,
+      "recipes": [
+        "avn::default"
+      ],
+      "required": "optional",
+      "display_name": "cluster_master",
+      "choice": [
+        "master",
+        "slave"
+      ],
+      "description": "Select master of transcoder master",
+      "type": "string"
+    },
+    "avn/transcoder_ip": {
+      "calculated": false,
+      "recipes": [
+        "avn::default"
+      ],
+      "required": "optional",
+      "display_name": "transcoder_ip",
+      "choice": [
+
+      ],
+      "description": "IP of transcoder server",
+      "type": "string"
+    },
+    "avn/tier": {
+      "calculated": false,
+      "recipes": [
+        "avn::default"
+      ],
+      "required": "required",
+      "display_name": "tier",
+      "choice": [
+        "cloudtv",
+        "transcoder"
+      ],
+      "description": "Server Role",
+      "type": "string"
+    }
+  },
+  "providing": {
+  },
   "suggestions": {
   },
-  "groupings": {
-  },
+  "maintainer": "",
   "long_description": ""
 }

@@ -39,3 +39,22 @@ attribute 'avn/cluster_master_ip',
     :type           => "string",
     :required       => "optional",
     :recipes        => [ "avn::default" ]
+
+attribute "avn/port",
+  :display_name => "Application Listen Port",
+  :description =>
+    "The port that the application service is listening on. Example: 80",
+  :default => "80",
+  :recipes => [ "avn::default" ],
+  :required => "optional"
+
+attribute "avn/backend_ip_type",
+  :display_name => "Application IP Type Given to Load Balancer",
+  :description =>
+    "Specify the IP type where the application server is listening." +
+    " Example: private",
+  :choice => ["public", "private"],
+  :default => "private",
+  :recipes => ["avn::default"],
+  :required => "optional"
+

@@ -25,8 +25,8 @@ pool_names(node[:lb][:pools]).each do |pool_name|
   # See cookbooks/lb_<provider>/provider/default.rb for the "detach_request" action.
   lb pool_name do
     backend_id node[:rightscale][:instance_uuid]
-    backend_ip node[:app][:ip]
-    backend_port node[:app][:port].to_i
+    backend_ip node[:avn][:ip]
+    backend_port node[:avn][:port].to_i
     service_region node[:lb][:service][:region]
     service_lb_name node[:lb][:service][:lb_name]
     service_account_id node[:lb][:service][:account_id]

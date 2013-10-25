@@ -16,7 +16,8 @@ depends "lb_haproxy"
 depends "lb_clb"
 depends "lb_elb"
 depends "apache2"
-depends "app", ">= 1.0"
+depends "avn"
+#depends "app", ">= 1.0"
 
 recipe "lb::default",
   "This loads the required load balancer resources."
