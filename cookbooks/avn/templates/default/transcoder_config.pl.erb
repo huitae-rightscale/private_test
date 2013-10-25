@@ -25,7 +25,7 @@ $WWWROOT = "/var/opt/transcoder";
 $VODCACHE = "vodcache";
 
 # The Riak cluster.  
-$RIAK_CLUSTER   = "http://127.0.0.1:8098/";
+$RIAK_CLUSTER   = "http://<%=@riak_master_ip%>:8098/";
 
 # The Riak Ring Leader. Set to the IP address or hostname of the ring leader 
 $RIAK_RING_LEADER   = "<%=@riak_master_ip%>";
