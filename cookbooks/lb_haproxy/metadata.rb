@@ -39,7 +39,7 @@ attribute "lb_haproxy/mode",
     "The protocol that the load balancer will use to direct traffic." +
     " Example: http / tcp",
   :required => "optional",
-  :default => "http",
+  :default => "tcp",
   :choice => ["http", "tcp"],
   :recipes => [
     "lb_haproxy::setup_server"
