@@ -1,16 +1,12 @@
 #
 # Cookbook Name:: lb_haproxy
 #
-# Copyright RightScale, Inc. All rights reserved.
-# All access and use subject to the RightScale Terms of Service available at
-# http://www.rightscale.com/terms.php and, if applicable, other agreements
-# such as a RightScale Master Subscription Agreement.
+# Copyright RightScale, Inc. All rights reserved.  All access and use subject to the
+# RightScale Terms of Service available at http://www.rightscale.com/terms.php and,
+# if applicable, other agreements such as a RightScale Master Subscription Agreement.
 
-# Sets up HAProxy backend configuration file in "/etc/haproxy".
-#
-# @param pool_name [String] Pool name to which the load balancer listens to.
-#
 define :lb_haproxy_backend, :pool_name => "" do
+
   backend_name = params[:pool_name] + "_backend"
   stats_uri = "stats uri #{node[:lb][:stats_uri]}" unless "#{node[:lb][:stats_uri]}".empty?
   stats_auth = "stats auth #{node[:lb][:stats_user]}:#{node[:lb][:stats_password]}" unless \
@@ -33,8 +29,7 @@ define :lb_haproxy_backend, :pool_name => "" do
       :health_uri_line => health_uri,
       :health_check_line => health_chk,
       :algorithm => node[:lb_haproxy][:algorithm],
-      :timeout_server => node[:lb_haproxy][:timeout_server],
-      :mode => node[:lb_haproxy][:mode]
+      :timeout_server => node[:lb_haproxy][:timeout_server]
     )
   end
 end

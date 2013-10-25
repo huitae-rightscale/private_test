@@ -1,16 +1,12 @@
-#
+# 
 # Cookbook Name:: lb_haproxy
 #
-# Copyright RightScale, Inc. All rights reserved.
-# All access and use subject to the RightScale Terms of Service available at
-# http://www.rightscale.com/terms.php and, if applicable, other agreements
-# such as a RightScale Master Subscription Agreement.
-
-# @resource lb
+# Copyright RightScale, Inc. All rights reserved.  All access and use subject to the
+# RightScale Terms of Service available at http://www.rightscale.com/terms.php and,
+# if applicable, other agreements such as a RightScale Master Subscription Agreement.
 
 include RightScale::LB::Helper
 
-# Installs the load balancer HAProxy on the local instance
 action :install do
 
   log "  Installing haproxy"
@@ -65,11 +61,7 @@ action :install do
     stats_file="stats socket /etc/haproxy/status user haproxy group haproxy"
     variables(
       :stats_file_line => stats_file,
-      :timeout_client => node[:lb_haproxy][:timeout_client],
-      :global_maxconn => node[:lb_haproxy][:global_maxconn],
-      :default_maxconn => node[:lb_haproxy][:default_maxconn],
-      :httpclose => node[:lb_haproxy][:httpclose],
-      :abortonclose => node[:lb_haproxy][:abortonclose]
+      :timeout_client => node[:lb_haproxy][:timeout_client]
     )
   end
 
@@ -98,7 +90,6 @@ action :install do
 end
 
 
-# Configures HAProxy load balancer to answer for specified virtual host
 action :add_vhost do
 
   pool_name = new_resource.pool_name
@@ -151,7 +142,6 @@ action :add_vhost do
 end
 
 
-# Attaches an application server to the HAProxy load balancer
 action :attach do
 
   pool_name = new_resource.pool_name
@@ -173,41 +163,13 @@ action :attach do
     action :create
   end
 
-  # Create a firewall rule to drop packets internally going to the haproxy
-  # service while it is being reloaded.
-  execute "insert localhost firewall rule" do
-    user "root"
-    group "root"
-    command "/sbin/iptables -I OUTPUT -p tcp -d 127.0.0.1 --dport 85 -j DROP"
-    action :nothing
-  end
-
-  # Remove the previously created firewall rule that was dropping packets sent
-  # to haproxy during reload.
-  execute "delete localhost firewall rule" do
-    user "root"
-    group "root"
-    command "/sbin/iptables -D OUTPUT -p tcp -d 127.0.0.1 --dport 85 -j DROP"
-    action :nothing
-  end
-
   # (Re)generates the haproxy config file.
   execute "/etc/haproxy/haproxy-cat.sh" do
     user "haproxy"
     group "haproxy"
     umask "0077"
     action :nothing
-    # A firewall rule is added to drop packets internally to haproxy, the
-    # service is reloaded, and the rule is removed. This helps to prevent the
-    # web server from sending 5xx responses as HAProxy will not be responding
-    # while it is being reloaded.
-    notifies :run, resources(
-      :execute => "insert localhost firewall rule"
-    )
     notifies :reload, resources(:service => "haproxy")
-    notifies :run, resources(
-      :execute => "delete localhost firewall rule"
-    )
   end
 
   # Creates an individual server file for each vhost and notifies the concatenation script if necessary.
@@ -230,7 +192,6 @@ action :attach do
   end
 end
 
-# Performs advanced configuration for the HAProxy load balancer
 action :advanced_configs do
 
   # Creates haproxy service.
@@ -280,7 +241,6 @@ action :advanced_configs do
 end
 
 
-# Sends an attach request from an application server to a HAProxy load balancer.
 action :attach_request do
 
   pool_name = new_resource.pool_name
@@ -303,7 +263,6 @@ action :attach_request do
 end
 
 
-# Detaches an application server from the HAProxy load balancer
 action :detach do
 
   pool_name = new_resource.pool_name
@@ -317,41 +276,13 @@ action :detach do
     action :nothing
   end
 
-  # Create a firewall rule to drop packets internally going to the haproxy
-  # service while it is being reloaded.
-  execute "insert localhost firewall rule" do
-    user "root"
-    group "root"
-    command "/sbin/iptables -I OUTPUT -p tcp -d 127.0.0.1 --dport 85 -j DROP"
-    action :nothing
-  end
-
-  # Remove the previously created firewall rule that was dropping packets sent
-  # to haproxy during reload.
-  execute "delete localhost firewall rule" do
-    user "root"
-    group "root"
-    command "/sbin/iptables -D OUTPUT -p tcp -d 127.0.0.1 --dport 85 -j DROP"
-    action :nothing
-  end
-
   # (Re)generates the haproxy config file.
   execute "/etc/haproxy/haproxy-cat.sh" do
     user "haproxy"
     group "haproxy"
     umask "0077"
     action :nothing
-    # A firewall rule is added to drop packets internally to haproxy, the
-    # service is reloaded, and the rule is removed. This helps to prevent the
-    # web server from sending 5xx responses as HAProxy will not be responding
-    # while it is being reloaded.
-    notifies :run, resources(
-      :execute => "insert localhost firewall rule"
-    )
     notifies :reload, resources(:service => "haproxy")
-    notifies :run, resources(
-      :execute => "delete localhost firewall rule"
-    )
   end
 
   # Deletes the individual server file and notifies the concatenation script if necessary.
@@ -364,7 +295,6 @@ action :detach do
 end
 
 
-# Sends a detach request from an application server to a HAProxy load balancer.
 action :detach_request do
 
   pool_name = new_resource.pool_name
@@ -384,7 +314,7 @@ action :detach_request do
 
 end
 
-# Installs and configures collectd plugins for the HAProxy server
+
 action :setup_monitoring do
 
   log "  Setup monitoring for haproxy"
@@ -402,10 +332,6 @@ action :setup_monitoring do
     source "haproxy_collectd_exec.erb"
     notifies :restart, resources(:service => "collectd")
     cookbook "lb_haproxy"
-    variables(
-      :collectd_lib => node[:rightscale][:collectd_lib],
-      :instance_uuid => node[:rightscale][:instance_uuid]
-    )
   end
 
   ruby_block "add_collectd_gauges" do
@@ -426,7 +352,6 @@ action :setup_monitoring do
 end
 
 
-# Restarts the HAProxy load balancer service
 action :restart do
 
   log "  Restarting haproxy"

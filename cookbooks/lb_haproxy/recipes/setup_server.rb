@@ -1,12 +1,11 @@
-#
+# 
 # Cookbook Name:: lb_haproxy
 #
-# Copyright RightScale, Inc. All rights reserved.
-# All access and use subject to the RightScale Terms of Service available at
-# http://www.rightscale.com/terms.php and, if applicable, other agreements
-# such as a RightScale Master Subscription Agreement.
+# Copyright RightScale, Inc. All rights reserved.  All access and use subject to the
+# RightScale Terms of Service available at http://www.rightscale.com/terms.php and,
+# if applicable, other agreements such as a RightScale Master Subscription Agreement.
 
-rightscale_marker
+rightscale_marker :begin
 
 class Chef::Recipe
   include RightScale::App::Helper
@@ -31,3 +30,5 @@ pool_list.each do |pool_name_short, pool_name_full|
     action :nothing
   end
 end
+
+rightscale_marker :end

@@ -1,12 +1,11 @@
 #
 # Cookbook Name:: lb
 #
-# Copyright RightScale, Inc. All rights reserved.
-# All access and use subject to the RightScale Terms of Service available at
-# http://www.rightscale.com/terms.php and, if applicable, other agreements
-# such as a RightScale Master Subscription Agreement.
+# Copyright RightScale, Inc. All rights reserved.  All access and use subject to the
+# RightScale Terms of Service available at http://www.rightscale.com/terms.php and,
+# if applicable, other agreements such as a RightScale Master Subscription Agreement.
 
-rightscale_marker
+rightscale_marker :begin
 
 class Chef::Recipe
   include RightScale::App::Helper
@@ -23,8 +22,8 @@ pool_names(node[:lb][:pools]).each do |pool_name|
   # See cookbooks/lb_<provider>/providers/default.rb for the "attach_request" action.
   lb pool_name do
     backend_id node[:rightscale][:instance_uuid]
-    backend_ip node[:avn][:ip]
-    backend_port node[:avn][:port].to_i
+    backend_ip node[:app][:ip]
+    backend_port node[:app][:port].to_i
     service_region node[:lb][:service][:region]
     service_lb_name node[:lb][:service][:lb_name]
     service_account_id node[:lb][:service][:account_id]
@@ -32,3 +31,5 @@ pool_names(node[:lb][:pools]).each do |pool_name|
     action :attach_request
   end
 end
+
+rightscale_marker :end

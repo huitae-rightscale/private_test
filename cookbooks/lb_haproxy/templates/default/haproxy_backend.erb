@@ -1,10 +1,6 @@
 backend <%= @backend_name_line %>
 
-    <% if @mode == "http" %>
         mode http
-    <% elsif @mode == "tcp" %>
-        mode http
-    <% end %>
         balance <%= @algorithm %>
         
         # Timeout
