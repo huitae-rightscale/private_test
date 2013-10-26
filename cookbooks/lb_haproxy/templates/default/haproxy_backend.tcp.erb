@@ -19,7 +19,8 @@ backend <%= @backend_name_line %>
 
         # Special server line that allow HAProxy to start with cookies enabled and no valid servers.
         server disabled-server 127.0.0.1:1 disabled
-listen <%= @backend_name_line %> :8095
+
+listen <%= @backend_name_line %>_tcp :8095
         mode tcp
         option tcplog
         balance <%= @algorithm %>
@@ -29,4 +30,7 @@ listen <%= @backend_name_line %> :8095
         # Haproxy status page
         <%= @stats_uri_line %>
         <%= @stats_auth_line %>
+
+        # Special server line that allow HAProxy to start with cookies enabled and no valid servers.
+        server disabled-server 127.0.0.1:1 disabled
 

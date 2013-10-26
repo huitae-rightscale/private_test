@@ -175,7 +175,7 @@ action :attach do
 
   # Creates an individual server file for each vhost and notifies the concatenation script if necessary.
   template ::File.join("/etc/haproxy/#{node[:lb][:service][:provider]}.d", pool_name, new_resource.backend_id) do
-    source "haproxy_server.erb"
+    source "haproxy_server.tcp.erb"
     owner "haproxy"
     group "haproxy"
     mode "0600"
