@@ -16,7 +16,8 @@ define :lb_haproxy_backend, :pool_name => "" do
 
   # Creates backend haproxy files for the vhost it will answer for.
   template ::File.join("/etc/haproxy/#{node[:lb][:service][:provider]}.d", "backend_#{params[:pool_name]}.conf") do
-    source "haproxy_backend.erb"
+    #source "haproxy_backend.erb"
+    source "haproxy_backend.tcp.erb"
     cookbook 'lb_haproxy'
     owner "haproxy"
     group "haproxy"

@@ -53,7 +53,8 @@ action :install do
   # Installs the haproxy config head which is the part of the haproxy config
   # that doesn't change.
   template "/etc/haproxy/haproxy.cfg.head" do
-    source "haproxy.cfg.head.erb"
+    #source "haproxy.cfg.head.erb"
+    source "haproxy.cfg.head.tcp.erb"
     cookbook "lb_haproxy"
     owner "haproxy"
     group "haproxy"

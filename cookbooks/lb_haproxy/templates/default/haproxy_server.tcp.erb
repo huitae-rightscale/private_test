@@ -1,0 +1,1 @@
+        server <%= @backend_name %> <%= @backend_ip %>:<%= @backend_port %><% if @session_sticky.to_s.match(/^(true|yes|on)$/i) %> check maxconn <%= @max_conn_per_server %>
