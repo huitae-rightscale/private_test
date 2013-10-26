@@ -15,7 +15,7 @@ attribute :pool_name, :kind_of => String, :name_attribute => true
 # Attaching/Detaching options
 attribute :backend_id, :kind_of => String, :default => ""
 attribute :backend_ip, :kind_of => String, :default => ""
-attribute :backend_port, :kind_of => Integer, :default => 8095
+attribute :backend_port, :kind_of => Integer, :default => 8000
 attribute :timeout, :kind_of => Integer, :default => 60 * 5
 attribute :session_sticky, :kind_of => String, :default => "true"
 

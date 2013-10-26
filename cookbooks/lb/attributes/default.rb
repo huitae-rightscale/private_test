@@ -24,5 +24,3 @@ default[:lb][:stats_password] = ""
 
 default[:lb][:session_stickiness] = ""
 default[:lb][:max_conn_per_server] = "500"
-
-default[:app][:port] = "8095"
