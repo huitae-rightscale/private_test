@@ -8,5 +8,5 @@
 
 rightscale_marker
 
-include_recipe "nodejs::install_from_#{node['nodejs']['install_method']}"
+#include_recipe "nodejs::install_from_#{node['nodejs']['install_method']}"
 

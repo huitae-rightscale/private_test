@@ -10,6 +10,7 @@ rightscale_marker
 
 bash "install_npm_module" do
   code <<-EOM
+    npm install socket.io 
     mkdir /usr/local/jboss
     tar zxf jboss.tar.gz --strip=1 -C /usr/local/jboss
     chown -R jboss:jboss /usr/local/jboss

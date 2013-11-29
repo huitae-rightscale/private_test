@@ -29,6 +29,3 @@ end
 packages.each do |p|
   package p
 end
-
-#include_recipe "nodejs::install_from_#{node['nodejs']['install_method']}"
-
