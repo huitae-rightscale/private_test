@@ -1,66 +1,82 @@
 {
-  "long_description": "DESCRIPTION\n===========\n\nInstalls Node.JS\n\nREQUIREMENTS\n============\n\n\nATTRIBUTES\n==========\n\n\nUSAGE\n=====\n\n\nLICENSE and AUTHOR\n==================\n\n",
+  "platforms": {
+    "redhat": ">= 0.0.0",
+    "centos": ">= 0.0.0",
+    "ubuntu": ">= 0.0.0"
+  },
+  "groupings": {
+  },
+  "recommendations": {
+  },
   "description": "This cookbook provides a set of nodejs recipes used by the RightScale Node.JS ServerTemplates. This cookbook contains  generic recipes that use the  Lightweight Resource Provider (LWRP) interface.",
+  "long_description": "DESCRIPTION\n===========\n\nInstalls Node.JS\n\nREQUIREMENTS\n============\n\n\nATTRIBUTES\n==========\n\n\nUSAGE\n=====\n\n\nLICENSE and AUTHOR\n==================\n\n",
+  "maintainer_email": "support@rightscale.com",
   "replacing": {
+  },
+  "conflicting": {
   },
   "version": "0.1.0",
   "attributes": {
     "nodejs/module_list": {
       "description": "Modules to be installed by npm.",
       "type": "array",
-      "required": "optional",
       "display_name": "module_list",
+      "calculated": false,
+      "required": "optional",
       "recipes": [
         "nodejs::default",
         "nodejs::install_server",
         "nodejs::install_modules"
       ],
-      "calculated": false,
       "choice": [
 
       ]
     },
     "nodejs/version": {
+      "default": "0.10.22",
       "description": "Node.js version to be installed.",
       "type": "string",
-      "default": "0.10.22",
-      "required": "recommended",
       "display_name": "nodejs_version",
+      "calculated": false,
+      "required": "recommended",
       "recipes": [
         "nodejs::default",
         "nodejs::install_server"
       ],
-      "calculated": false,
       "choice": [
 
       ]
+    },
+    "nodejs/module_global": {
+      "default": "true",
+      "description": "Install modules with global environment.",
+      "type": "string",
+      "display_name": "module_global",
+      "calculated": false,
+      "required": "recommended",
+      "recipes": [
+        "nodejs::default",
+        "nodejs::install_modules"
+      ],
+      "choice": [
+        "true",
+        "false"
+      ]
     }
-  },
-  "maintainer_email": "support@rightscale.com",
-  "groupings": {
-  },
-  "providing": {
   },
   "suggestions": {
   },
-  "dependencies": {
-    "rightscale": ">= 0.0.0"
-  },
-  "recipes": {
-    "nodejs::install_modules": "Installs Node.JS from packages",
-    "nodejs": "Installs Node.JS based on the default installation method",
-    "nodejs::install_server": "Installs Node.JS from packages"
+  "name": "nodejs",
+  "providing": {
   },
   "license": "Copyright RightScale, Inc. All rights reserved.",
-  "conflicting": {
+  "recipes": {
+    "nodejs::install_modules": "Installs Node.JS from packages",
+    "nodejs::install_server": "Installs Node.JS from packages",
+    "nodejs": "Installs Node.JS based on the default installation method"
   },
-  "name": "nodejs",
-  "recommendations": {
-  },
-  "platforms": {
-    "redhat": ">= 0.0.0",
-    "centos": ">= 0.0.0",
-    "ubuntu": ">= 0.0.0"
+  "dependencies": {
+    "rightscale": ">= 0.0.0"
   },
   "maintainer": "RightScale, Inc."
 }

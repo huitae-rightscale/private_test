@@ -11,18 +11,11 @@ rightscale_marker
 module_list = node['nodejs']['module_list']
 
 module_list.each do |mod|
-    nodejs_module mod
+    nodejs_module mod do
+      if node['nodejs']['module_global']
+        is_global   true
+      else
+        is_global   false
+      end
+    end
 end
-
-#bash "install_npm_module" do
-#  code <<-EOM
-#    npm install socket.io 
-#    mkdir /usr/local/jboss
-#    tar zxf jboss.tar.gz --strip=1 -C /usr/local/jboss
-#    chown -R jboss:jboss /usr/local/jboss
-#    chmod 0755 /usr/local/jboss
-#    rm -f /usr/local/jboss/bin/*.bat
-#    rm -f /usr/local/jboss/standalone/configuration/*.xml
-#  EOM
-#  not_if { ::File.exists?("/usr/local/jboss/bin") }
-#end

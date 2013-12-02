@@ -1,15 +1,15 @@
-define :nodejs_module, :enable => true do
+define :nodejs_module, :enable => true, :is_global => false do
 
     log "installing nodejs module : #{params[:name]}"
 
-#    execute "install npm module" do
-#      command "npm -g install #{params[:name]}"
-#    end
+    if params[:is_global] == "true"
+        global = "-g"
+    else
+        global = " "
+    end
 
-    bash "install_npm_module" do
-      code <<-EOM
-        npm -g install #{params[:mod]}
-      EOM
+    execute "install npm module" do
+      command "npm #{global} install #{params[:name]}"
     end
 
     log "installation is done : #{params[:name]}"

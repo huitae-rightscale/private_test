@@ -32,3 +32,12 @@ attribute "nodejs/module_list",
     :type           => "array",
     :display_name   => "module_list",
     :required       => "optional"
+
+attribute "nodejs/module_global",
+    :description    => "Install modules with global environment.",
+    :recipes        => ["nodejs::default", "nodejs::install_modules"],
+    :choice         => ["true", "false"],
+    :type           => "string",
+    :display_name   => "module_global",
+    :required       => "recommended",
+    :default        => "true"
