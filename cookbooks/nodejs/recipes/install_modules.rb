@@ -8,15 +8,21 @@
 
 rightscale_marker
 
-bash "install_npm_module" do
-  code <<-EOM
-    npm install socket.io 
-    mkdir /usr/local/jboss
-    tar zxf jboss.tar.gz --strip=1 -C /usr/local/jboss
-    chown -R jboss:jboss /usr/local/jboss
-    chmod 0755 /usr/local/jboss
-    rm -f /usr/local/jboss/bin/*.bat
-    rm -f /usr/local/jboss/standalone/configuration/*.xml
-  EOM
-  not_if { ::File.exists?("/usr/local/jboss/bin") }
+module_list = node['nodejs']['modules']
+
+module_list.each do |mod|
+    nodejs_module mod
 end
+
+#bash "install_npm_module" do
+#  code <<-EOM
+#    npm install socket.io 
+#    mkdir /usr/local/jboss
+#    tar zxf jboss.tar.gz --strip=1 -C /usr/local/jboss
+#    chown -R jboss:jboss /usr/local/jboss
+#    chmod 0755 /usr/local/jboss
+#    rm -f /usr/local/jboss/bin/*.bat
+#    rm -f /usr/local/jboss/standalone/configuration/*.xml
+#  EOM
+#  not_if { ::File.exists?("/usr/local/jboss/bin") }
+#end

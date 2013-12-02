@@ -29,3 +29,5 @@ end
 packages.each do |p|
   package p
 end
+
+log "Node.js is installed successfully!!"
