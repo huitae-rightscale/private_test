@@ -8,7 +8,7 @@
 
 rightscale_marker
 
-module_list = node['nodejs']['modules']
+module_list = node['nodejs']['module_list']
 
 module_list.each do |mod|
     nodejs_module mod
