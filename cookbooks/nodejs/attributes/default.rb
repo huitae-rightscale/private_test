@@ -9,4 +9,5 @@
 default[:nodejs][:version] = "0.10.22"
 default[:nodejs][:checksum_linux_x64] = "3739f75bbb85c920a237ceb1c34cb872409d61f7"
 default[:nodejs][:module_list] = []
+default[:nodejs][:module_global] = "false"
 
