@@ -1,10 +1,10 @@
 define :nodejs_module, :enable => true do
 
-    log "parametes are : #{params[:name]}"
+    log "installing nodejs module : #{params[:name]}"
 
-#    execute "install npm module" do
-#      command "npm -g install #{params[:name]"
-#    end
+    execute "install npm module" do
+      command "npm -g install #{params[:name]}"
+    end
 
 #    bash "install_npm_module" do
 #      code <<-EOM
@@ -12,4 +12,5 @@ define :nodejs_module, :enable => true do
 #        mkdir /usr/local/jboss
 #      EOM
 #    end
+    log "installation is done : #{params[:name]}"
 end
