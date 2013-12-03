@@ -8,6 +8,8 @@
 
 rightscale_marker
 
+group "nodejs" 
+
 user "nodejs" do
   home "/usr/local/nodejs"
   group "nodejs"
