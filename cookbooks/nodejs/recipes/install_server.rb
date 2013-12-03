@@ -55,7 +55,7 @@ case node["platform"]
         group "root"
         cookbook "nodejs"
         variables({
-            :nodejs_install_path    => [:nodejs][:bin_path]
+            :nodejs_install_path    => node[:nodejs][:bin_path]
         })
     end
   else
