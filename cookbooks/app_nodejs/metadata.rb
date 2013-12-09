@@ -17,7 +17,7 @@ depends "rightscale"
 depends "web_apache"
 depends "logrotate"
 
-recipe "app_nodejs::install_server", "Installs Node.js"
+recipe "app_nodejs::setup_server", "Setup Node.js installation"
 recipe "app_nodejs::install_modules", "Installs Node.js module"
 
 #recipe "app_passenger::setup_server_3_0",
@@ -35,7 +35,7 @@ recipe "app_nodejs::install_modules", "Installs Node.js module"
 
 attribute "app_nodejs/version",
   :description    => "Node.js version to be installed.",
-  :recipes        => ["app_nodejs::install_server"],
+  :recipes        => ["app_nodejs::setup_server"],
   :type           => "string",
   :display_name   => "nodejs_version",
   :required       => "recommended",
@@ -45,7 +45,7 @@ attribute "app_nodejs/module_list",
   :description    => "Modules to be installed by npm." +
                      " seperated by blank" +
                      " example : module1 module2 ",
-  :recipes        => ["app_nodejs::install_server", "app_nodejs::install_modules"],
+  :recipes        => ["app_nodejs::setup_server", "app_nodejs::install_modules"],
   :type           => "string",
   :display_name   => "module_list",
   :default        => "express forever",
