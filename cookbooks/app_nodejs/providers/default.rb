@@ -11,28 +11,28 @@
 # Stops apache/passenger
 action :stop do
   log "  Running stop sequence"
-  service "apache2" do
-    action :stop
-    persist false
-  end
+#  service "apache2" do
+#    action :stop
+#    persist false
+#  end
 end
 
 # Starts apache/passenger
 action :start do
   log "  Running start sequence"
-  service "apache2" do
-    action :start
-    persist false
-  end
+#  service "apache2" do
+#    action :start
+#    persist false
+#  end
 end
 
 # Reloads apache/passenger
 action :reload do
   log "  Running reload sequence"
-  service "apache2" do
-    action :reload
-    persist false
-  end
+#  service "apache2" do
+#    action :reload
+#    persist false
+#  end
 end
 
 # Restarts apache/passenger
@@ -100,7 +100,8 @@ end
 
 # Sets up apache/passenger virtual host
 action :setup_vhost do
-  raise 'Will do nothing because node.js will act as a webserver itself'
+  #raise 'Will do nothing because node.js will act as a webserver itself'
+  log "Will do nothing because node.js will act as a webserver itself"
 end
 
 
