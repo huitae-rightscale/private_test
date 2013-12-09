@@ -106,7 +106,8 @@ end
 
 # Sets up Passenger database connection
 action :setup_db_connection do
-  raise 'DB connection will be handled by node.js module'
+  #raise 'DB connection will be handled by node.js module'
+  log "DB connection will be handled by node.js module"
 end
 
 
