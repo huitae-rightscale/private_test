@@ -20,19 +20,6 @@ depends "logrotate"
 recipe "app_nodejs::setup_server", "Setup Node.js installation"
 recipe "app_nodejs::install_modules", "Installs Node.js module"
 
-#recipe "app_passenger::setup_server_3_0",
-#  "Sets provider-specific attributes for rails-passenger"
-#
-#recipe "app_passenger::install_custom_gems",
-#  "Installs custom gems."
-#
-#recipe "app_passenger::install_required_app_gems",
-#  "Installs bundler gems. Gemfile must be present in app directory."
-#
-#recipe "app_passenger::run_custom_rails_commands",
-#  "Runs specific user defined commands. Commands will be executed in" +
-#  " the app directory."
-
 attribute "app_nodejs/version",
   :description    => "Node.js version to be installed.",
   :recipes        => ["app_nodejs::setup_server"],

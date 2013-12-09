@@ -133,6 +133,27 @@ action :code_update do
 
 end
 
+action :install_modules do
+
+  modules = new_resource.mod_name
+  is_global = new_resource.g_option
+
+  log "installing nodejs module : #{modules}"
+
+  if is_global == "true"
+      global = "-g"
+  else
+      global = " "
+  end
+
+  execute "install npm module" do
+    command "npm #{global} install #{modules}"
+  end
+
+  log "installation is done : #{modules}"
+
+end
+
 # Sets up monitoring tools for passenger
 action :setup_monitoring do
   log "  Monitoring resource is not implemented in php framework yet. Use apache monitoring instead."
