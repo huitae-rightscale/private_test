@@ -6,21 +6,11 @@
 # http://www.rightscale.com/terms.php and, if applicable, other agreements
 # such as a RightScale Master Subscription Agreement.
 
-# List of required apache modules
-default[:app_passenger][:module_dependencies] = []
-# By default apache will serve any existing local files directly (except actionable ones)
-default[:app_passenger][:apache][:serve_local_files] = "true"
-# By default passenger will use "conservative" spawn method. For more info see:
-# http://www.modrails.com/documentation/Users%20guide%20Apache.html#PassengerSpawnMethod
-default[:app_passenger][:rails_spawn_method] = "conservative"
-# By default rails application environment variable is set to "development"
-default[:app_passenger][:project][:environment] = "development"
-# List of additional gems, required for rails application
-default[:app_passenger][:project][:gem_list] = ""
-# List of rake commands required for rails application initialization
-default[:app_passenger][:project][:custom_cmd] = ""
+default[:nodejs][:version]      = "0.10.22"
+default[:nodejs][:bin_baseurl]  = "http://nodejs.org/dist/v#{node[:nodejs][:version]}"
+default[:nodejs][:tar]          = "node-v#{node[:nodejs][:version]}-linux-x64.tar.gz"
+default[:nodejs][:source]       = "http://nodejs.org/dist/v#{node[:nodejs][:version]}/#{node[:nodejs][:tar]}"
+default[:nodejs][:bin_path]     = "/usr/local/nodejs"
+default[:nodejs][:checksum_linux_x64] = "3739f75bbb85c920a237ceb1c34cb872409d61f7"
+default[:nodejs][:module_list]  = []
 
-# Path to Ruby gem executable
-set[:app_passenger][:gem_bin] = "/usr/bin/gem"
-# Path to Ruby ruby executable
-set[:app_passenger][:ruby_bin] = "/usr/bin/ruby"

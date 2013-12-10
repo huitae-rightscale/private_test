@@ -9,9 +9,9 @@
 # This is an adaptation of Opscode "deploy" resource to be used with RightScale repository LWRPs:
 # cookbooks/repo, cookbooks/repo_git, cookbooks/repo_ros, cookbooks/repo_svn
 
-define :app_nodejs, :mode_name => "", :g_option => "" do
+define :app_nodejs, :mod_name => "", :g_option => "" do
 
-  modules = params[:mode_name]
+  modules = params[:mod_name]
   is_global = params[:g_option]
 
   log "installing nodejs module : #{modules}"
