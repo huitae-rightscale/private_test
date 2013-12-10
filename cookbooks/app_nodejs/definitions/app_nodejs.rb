@@ -9,7 +9,7 @@
 # This is an adaptation of Opscode "deploy" resource to be used with RightScale repository LWRPs:
 # cookbooks/repo, cookbooks/repo_git, cookbooks/repo_ros, cookbooks/repo_svn
 
-define :app_nodejs, :mod_name => "", :g_option => "" do
+define :app_nodejs, :mod_name => nil, :g_option => false do
 
   modules = params[:mod_name]
   is_global = params[:g_option]

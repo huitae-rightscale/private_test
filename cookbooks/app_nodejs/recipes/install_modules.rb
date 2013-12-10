@@ -8,7 +8,8 @@
 
 rightscale_marker
 
-log "  Installing nodejs modules:"
+log "  Installing nodejs modules: #{node[:app_nodejs][:module_list]}"
+log "  with options : #{node[:app_nodejs][:module_global]}"
 
 app_nodejs "default" do
     mod_name = node[:app_nodejs][:module_list]
