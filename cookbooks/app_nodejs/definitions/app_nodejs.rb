@@ -14,7 +14,7 @@ define :app_nodejs, :options => "", :mod_name => nil, :path => nil, :g_option =>
   log "Create path to install in #{params[:path]} if not exists...."
 
   directory "#{params[:path]}" do
-    ower "root"
+    owner "root"
     group "root"
     mode 0755 
     recursive true
