@@ -13,5 +13,4 @@ log "  Installing nodejs modules:"
 app_nodejs "default" do
     mod_name = node[:app_nodejs][:module_list]
     g_option = node[:app_nodejs][:module_global]
-    action :install_modules
 end
