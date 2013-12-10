@@ -11,8 +11,8 @@
 
 define :app_nodejs, :mode_name => "", :g_option => "" do
 
-  modules = param[:mode_name]
-  is_global = param[:g_option]
+  modules = params[:mode_name]
+  is_global = params[:g_option]
 
   log "installing nodejs module : #{modules}"
 
