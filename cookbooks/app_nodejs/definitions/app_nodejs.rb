@@ -9,24 +9,31 @@
 # This is an adaptation of Opscode "deploy" resource to be used with RightScale repository LWRPs:
 # cookbooks/repo, cookbooks/repo_git, cookbooks/repo_ros, cookbooks/repo_svn
 
-define :app_nodejs, :mod_name => nil, :g_option => false do
+define :app_nodejs, :options => "", :mod_name => nil, :path => nil, :g_option => false do
 
-  modules = params[:mod_name]
-  is_global = params[:g_option]
+  log "Create path to install in #{params[:path]} if not exists...."
 
-  log "installing nodejs module : #{modules}"
+  directory "#{params[:path]}" do
+    ower nodejs
+    group nodejs
+    mode 0755 
+    recursive true
+    action :create
+    only_if { params[:path]!=nil }
+    not_if { ::File.directory?("#{params[:path]}") }
+  end
 
-  if is_global == "true"
-      global = "-g"
-  else
-      global = " "
+  log "installing nodejs module : #{params[:mod_name}"
+
+  if (params[:g_option] == "true" && ! params[:path].nil?)
+      option = "-g --prefix #{params[:path]} "
   end
 
   execute "install npm module" do
-    command "npm #{global} install #{modules}"
+    command "npm #{option} install #{params[:mod_name]}"
   end
 
-  log "installation is done : #{modules}"
+  log "installation is done : #{params[:mod_name]}"
 
 end
 
