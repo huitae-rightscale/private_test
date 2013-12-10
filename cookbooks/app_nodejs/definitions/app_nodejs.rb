@@ -23,9 +23,9 @@ define :app_nodejs, :options => "", :mod_name => nil, :path => nil, :g_option =>
     not_if { ::File.directory?("#{params[:path]}") }
   end
 
-  log "installing nodejs module : #{params[:mod_name}"
+  log "installing nodejs module : #{params[:mod_name]}"
 
-  if (params[:g_option] == "true" && ! params[:path].nil?)
+  if (params[:g_option] == "true" && !params[:path].nil?)
       option = "-g --prefix #{params[:path]} "
   end
 
