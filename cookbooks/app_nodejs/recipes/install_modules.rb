@@ -14,4 +14,5 @@ log "  with options : #{node[:app_nodejs][:module_global]}"
 app_nodejs "default" do
     mod_name node[:app_nodejs][:module_list]
     g_option node[:app_nodejs][:module_global]
+    path node[:app_nodejs][:path_to_install]
 end

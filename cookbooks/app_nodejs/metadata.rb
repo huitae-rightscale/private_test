@@ -47,6 +47,13 @@ attribute "app_nodejs/module_global",
   :required       => "recommended",
   :default        => "true"
 
+attribute "app_nodejs/path_to_install",
+  :description    => "Set path that modules are to be installed.",
+  :recipes        => ["app_nodejs::install_modules"],
+  :type           => "string",
+  :display_name   => "path_to_install",
+  :required       => "optional"
+
 #attribute "app_passenger/rails_spawn_method",
 #  :display_name => "Rails spawn method",
 #  :description =>
